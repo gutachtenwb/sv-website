@@ -15,10 +15,10 @@ export default function Header() {
             KSB
           </span>
           <span className="font-display font-semibold text-lg leading-tight">
-            Kfz-Sachverständigenbüro
+            Kfz-Sachverständigenbüro Württemberg
             <br />
             <span className="text-sm font-body font-normal text-graphit/70">
-              Mustermann
+              Villingen-Schwenningen
             </span>
           </span>
         </Link>
