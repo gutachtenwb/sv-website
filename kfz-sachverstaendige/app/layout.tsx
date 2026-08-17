@@ -31,18 +31,20 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.companyName} | KFZ-Gutachter in Villingen-Schwenningen`,
+    default: `${siteConfig.companyName} | Kfz-Sachverständiger & Prüfzentrum Villingen-Schwenningen`,
     template: `%s | ${siteConfig.companyName}`,
   },
   description:
-    "Unfallgutachten, Fahrzeugbewertung und technische Beweissicherung in Villingen-Schwenningen und Umgebung. ADAC Vertrags-Sachverständiger mit moderner Prüf- und Messtechnik.",
+    "Kfz-Sachverständiger in Villingen-Schwenningen mit eigenem Prüfzentrum: Unfallgutachten, Achsvermessung, 3D-Rahmenvermessung und Fahrzeugbewertung. ADAC Vertrags-Sachverständiger.",
   keywords: [
-    "KFZ Gutachter Villingen-Schwenningen",
-    "KFZ Sachverständiger Villingen-Schwenningen",
+    "Kfz-Sachverständiger Villingen-Schwenningen",
+    "Kfz-Gutachter Villingen-Schwenningen",
     "Unfallgutachten Villingen-Schwenningen",
+    "Kfz-Prüfzentrum Villingen-Schwenningen",
+    "Achsvermessung Villingen-Schwenningen",
+    "Rahmenvermessung Villingen-Schwenningen",
     "Schadengutachten Villingen-Schwenningen",
     "Fahrzeugbewertung Villingen-Schwenningen",
-    "KFZ Gutachter Schwarzwald-Baar-Kreis",
   ],
   authors: [{ name: siteConfig.contactPerson }],
   alternates: {
@@ -53,15 +55,15 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: siteConfig.siteUrl,
     siteName: siteConfig.companyName,
-    title: `${siteConfig.companyName} | KFZ-Gutachter in Villingen-Schwenningen`,
+    title: `${siteConfig.companyName} | Kfz-Sachverständiger & Prüfzentrum Villingen-Schwenningen`,
     description:
-      "Unfallgutachten, Fahrzeugbewertung und technische Beweissicherung — ADAC Vertrags-Sachverständiger in Villingen-Schwenningen.",
+      "Unfallgutachten, Achsvermessung, 3D-Rahmenvermessung und Fahrzeugbewertung aus dem eigenen Prüfzentrum — ADAC Vertrags-Sachverständiger in Villingen-Schwenningen.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.companyName} | KFZ-Gutachter in Villingen-Schwenningen`,
+    title: `${siteConfig.companyName} | Kfz-Sachverständiger & Prüfzentrum Villingen-Schwenningen`,
     description:
-      "Unfallgutachten, Fahrzeugbewertung und technische Beweissicherung in Villingen-Schwenningen.",
+      "Unfallgutachten, Achsvermessung, 3D-Rahmenvermessung und Fahrzeugbewertung aus dem eigenen Prüfzentrum in Villingen-Schwenningen.",
   },
   robots: {
     index: true,
@@ -88,7 +90,7 @@ export default function RootLayout({
         <JsonLd data={localBusinessSchema()} />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-signalorange text-nebel px-4 py-2"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-safran text-graphit font-medium px-4 py-2"
         >
           Zum Inhalt springen
         </a>

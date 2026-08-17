@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
-import ServiceCard from "@/components/ServiceCard";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import { fotos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Technische Beweissicherung",
@@ -66,18 +66,26 @@ export default function TechnischeBeweissicherungPage() {
           <ul className="mt-6 space-y-2.5 text-sm">
             {leistungen.map((l) => (
               <li key={l} className="flex items-start gap-2">
-                <span className="text-signalorange mt-1">—</span>
+                <span className="text-safran mt-1">—</span>
                 <span className="text-graphit/80">{l}</span>
               </li>
             ))}
           </ul>
         </div>
-        <ImagePlaceholder label="Technische Untersuchung am Fahrzeug" className="h-full min-h-[20rem]" />
+        <div className="relative h-full min-h-[20rem]">
+          <Image
+            src={fotos.technischeUntersuchung.src}
+            alt={fotos.technischeUntersuchung.alt}
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover object-[center_20%]"
+          />
+        </div>
       </section>
 
       <section className="bg-graphit text-nebel">
         <div className="max-w-content mx-auto px-6 py-16">
-          <p className="eyebrow text-nebel/50 mb-3">Messverfahren</p>
+          <p className="eyebrow eyebrow-light mb-3">Messverfahren</p>
           <h2 className="text-2xl font-semibold font-display max-w-xl">
             Unsere Mess- und Diagnosetechnik
           </h2>
@@ -117,7 +125,7 @@ export default function TechnischeBeweissicherungPage() {
 
 function ServiceLink({ href }: { href: string }) {
   return (
-    <Link href={href} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-signalorange">
+    <Link href={href} className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-safran">
       Mehr erfahren →
     </Link>
   );

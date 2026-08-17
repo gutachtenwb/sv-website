@@ -12,21 +12,9 @@ export const metadata: Metadata = {
 
 const kategorien = [
   {
-    titel: "Unfall & Schaden",
-    beschreibung:
-      "Gutachten und Dokumentation rund um Verkehrsunfälle und Fahrzeugschäden.",
-    leistungen: [
-      {
-        href: "/leistungen/unfallgutachten",
-        titel: "Unfallgutachten",
-        text: "Schadenaufnahme, Reparaturkosten, Wiederbeschaffungswert, Restwert und Wertminderung nach einem Unfall.",
-      },
-    ],
-  },
-  {
     titel: "Technische Untersuchungen",
     beschreibung:
-      "Über die reine Sichtprüfung hinaus: Messung, Diagnose und technische Beweissicherung.",
+      "Unser Alleinstellungsmerkmal: das eigene Prüfzentrum. Über die reine Sichtprüfung hinaus — Messung, Diagnose und technische Beweissicherung.",
     leistungen: [
       {
         href: "/leistungen/technische-beweissicherung",
@@ -52,6 +40,18 @@ const kategorien = [
         href: "/leistungen/fahrzeugdiagnose",
         titel: "Fahrzeugdiagnose",
         text: "Elektronische Fehlerspeicherauslese als Ergänzung zur mechanischen Schadenaufnahme.",
+      },
+    ],
+  },
+  {
+    titel: "Unfall & Schaden",
+    beschreibung:
+      "Gutachten und Dokumentation rund um Verkehrsunfälle und Fahrzeugschäden.",
+    leistungen: [
+      {
+        href: "/leistungen/unfallgutachten",
+        titel: "Unfallgutachten",
+        text: "Schadenaufnahme, Reparaturkosten, Wiederbeschaffungswert, Restwert und Wertminderung nach einem Unfall.",
       },
     ],
   },
@@ -94,7 +94,7 @@ export default function LeistungenPage() {
           <section key={kat.titel}>
             <p className="eyebrow mb-2">{kat.titel}</p>
             <p className="text-graphit/70 max-w-2xl mb-8">{kat.beschreibung}</p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-messing/30">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {kat.leistungen.map((l) => (
                 <ServiceCard key={l.href} href={l.href} titel={l.titel} text={l.text} />
               ))}

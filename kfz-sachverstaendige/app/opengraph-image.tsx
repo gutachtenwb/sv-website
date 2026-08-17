@@ -22,36 +22,21 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: "50%",
-              border: "3px solid #2F5D73",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 18,
-              fontWeight: 700,
-              color: "#2F5D73",
-            }}
-          >
-            SV
-          </div>
-          <div style={{ fontSize: 24, color: "#9AA5A0" }}>
-            {siteConfig.adacStatus}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ width: 28, height: 2, backgroundColor: "#C6A24C" }} />
+          <div style={{ fontSize: 22, color: "#C6A24C", letterSpacing: 2 }}>
+            {siteConfig.adacStatus.toUpperCase()}
           </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ fontSize: 60, fontWeight: 700, lineHeight: 1.1 }}>
-            {siteConfig.companyName}
+          <div style={{ fontSize: 58, fontWeight: 700, lineHeight: 1.1 }}>
+            Kfz-Sachverständige mit eigenem Prüfzentrum
           </div>
-          <div style={{ fontSize: 30, color: "#9AA5A0" }}>
-            Unfallgutachten · Fahrzeugbewertung · Technische Beweissicherung
+          <div style={{ fontSize: 28, color: "#9A9488" }}>
+            Unfallgutachten · Achsvermessung · 3D-Rahmenvermessung
           </div>
-          <div style={{ fontSize: 26, color: "#E1622F" }}>
+          <div style={{ fontSize: 26, color: "#C6A24C" }}>
             {siteConfig.address.city}
           </div>
         </div>

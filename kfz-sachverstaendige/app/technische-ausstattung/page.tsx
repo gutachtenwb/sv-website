@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import EquipmentCard from "@/components/EquipmentCard";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import { fotos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Unsere technische Ausstattung",
@@ -61,6 +62,16 @@ export default function AusstattungPage() {
         breadcrumbs={[{ name: "Technische Ausstattung", path: "/technische-ausstattung" }]}
       />
 
+      <section className="relative h-[42vh] min-h-[280px] md:h-[52vh] md:min-h-[380px]">
+        <Image
+          src={fotos.pruefstand.src}
+          alt={fotos.pruefstand.alt}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </section>
+
       <section className="bg-graphit text-nebel">
         <div className="max-w-content mx-auto px-6 py-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -71,19 +82,29 @@ export default function AusstattungPage() {
         </div>
       </section>
 
-      <section className="max-w-content mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-content mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
         <div>
+          <p className="eyebrow mb-3">Standort</p>
           <h2 className="text-2xl font-semibold font-display">
-            Prüfhalle & Arbeitsumgebung
+            Eigenes Prüf- und Sachverständigenzentrum
           </h2>
           <p className="mt-4 text-graphit/70 leading-relaxed">
             Die Begutachtung erfolgt mit geeigneter technischer Ausstattung
             für Karosserie-, Achs- und Lackprüfung sowie elektronische
             Fahrzeugdiagnose. So lassen sich Befunde nicht nur beschreiben,
-            sondern messtechnisch belegen.
+            sondern messtechnisch belegen — direkt an unserem Standort in
+            Villingen-Schwenningen.
           </p>
         </div>
-        <ImagePlaceholder label="Prüfhalle / Betrieb" className="min-h-[16rem]" />
+        <div className="relative aspect-[4/3]">
+          <Image
+            src={fotos.gebaeude.src}
+            alt={fotos.gebaeude.alt}
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover"
+          />
+        </div>
       </section>
 
       <CTASection

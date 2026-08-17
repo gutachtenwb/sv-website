@@ -74,7 +74,7 @@ export default function Impressum() {
               href="https://ec.europa.eu/consumers/odr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stahlblau hover:underline"
+              className="text-safran-dunkel hover:underline"
             >
               ec.europa.eu/consumers/odr
             </a>

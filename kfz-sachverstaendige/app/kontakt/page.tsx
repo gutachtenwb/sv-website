@@ -24,13 +24,13 @@ export default function KontaktPage() {
           <div className="space-y-6 font-mono text-sm">
             <div>
               <p className="text-graphit/50 text-xs uppercase tracking-wide">Telefon</p>
-              <a href={siteConfig.phone.href} className="mt-1 block text-lg hover:text-stahlblau">
+              <a href={siteConfig.phone.href} className="mt-1 block text-lg hover:text-safran-dunkel">
                 {siteConfig.phone.display}
               </a>
             </div>
             <div>
               <p className="text-graphit/50 text-xs uppercase tracking-wide">E-Mail</p>
-              <a href={siteConfig.email.href} className="mt-1 block text-lg hover:text-stahlblau break-all">
+              <a href={siteConfig.email.href} className="mt-1 block text-lg hover:text-safran-dunkel break-all">
                 {siteConfig.email.display}
               </a>
             </div>
@@ -69,7 +69,7 @@ export default function KontaktPage() {
               type="text"
               required
               autoComplete="name"
-              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-stahlblau outline-none"
+              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-safran-dunkel outline-none"
             />
           </div>
           <div>
@@ -82,7 +82,7 @@ export default function KontaktPage() {
               type="email"
               required
               autoComplete="email"
-              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-stahlblau outline-none"
+              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-safran-dunkel outline-none"
             />
           </div>
           <div>
@@ -94,7 +94,7 @@ export default function KontaktPage() {
               name="telefon"
               type="tel"
               autoComplete="tel"
-              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-stahlblau outline-none"
+              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-safran-dunkel outline-none"
             />
           </div>
           <div>
@@ -104,7 +104,7 @@ export default function KontaktPage() {
             <select
               id="anliegen"
               name="anliegen"
-              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-stahlblau outline-none"
+              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-safran-dunkel outline-none"
             >
               <option>Unfallgutachten / Schadengutachten</option>
               <option>Technische Beweissicherung</option>
@@ -123,7 +123,7 @@ export default function KontaktPage() {
               name="nachricht"
               rows={5}
               required
-              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-stahlblau outline-none"
+              className="w-full border border-messing/50 bg-transparent px-4 py-3 focus:border-safran-dunkel outline-none"
             />
           </div>
           <button type="submit" className="btn-primary">

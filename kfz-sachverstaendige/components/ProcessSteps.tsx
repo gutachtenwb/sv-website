@@ -32,7 +32,7 @@ export default function ProcessSteps({ variant = "dark" }: { variant?: "dark" | 
     <div className="mt-12 grid md:grid-cols-5 gap-10">
       {ablauf.map((a) => (
         <div key={a.schritt}>
-          <p className="font-mono text-signalorange text-sm">{a.schritt}</p>
+          <p className="font-mono text-safran text-sm">{a.schritt}</p>
           <h3 className="mt-3 font-display font-semibold">{a.titel}</h3>
           <p className={`mt-2 text-sm leading-relaxed ${textClass}`}>{a.text}</p>
         </div>

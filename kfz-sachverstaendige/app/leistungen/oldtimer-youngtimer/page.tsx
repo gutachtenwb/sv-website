@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 export const metadata: Metadata = {
   title: "Oldtimer- & Youngtimerbewertung",
@@ -33,19 +32,26 @@ export default function OldtimerYoungtimerPage() {
         ]}
       />
 
-      <section className="max-w-content mx-auto px-6 pb-16 grid md:grid-cols-2 gap-12 items-start">
-        <div>
+      <section className="max-w-content mx-auto px-6 pb-16 md:pb-24">
+        <div className="max-w-2xl border-t border-messing/30 pt-10">
           <h2 className="text-2xl font-semibold font-display">Leistungen</h2>
-          <ul className="mt-6 space-y-2.5 text-sm">
+          <ul className="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2.5 text-sm">
             {leistungen.map((l) => (
               <li key={l} className="flex items-start gap-2">
-                <span className="text-signalorange mt-1">—</span>
+                <span className="text-safran mt-1">—</span>
                 <span className="text-graphit/80">{l}</span>
               </li>
             ))}
           </ul>
+          <p className="mt-8 text-graphit/70 leading-relaxed">
+            Klassiker und junge Youngtimer bringen technische und
+            wertbildende Besonderheiten mit, die eine pauschale Bewertung
+            nicht abbildet. Wir berücksichtigen Zustand, Originalität,
+            Historie und Marktlage und dokumentieren das Ergebnis
+            nachvollziehbar — bei Bedarf ergänzt durch die Messmöglichkeiten
+            unseres Prüfzentrums.
+          </p>
         </div>
-        <ImagePlaceholder label="Oldtimer / Youngtimer bei der Begutachtung" className="h-full min-h-[18rem]" />
       </section>
 
       <CTASection

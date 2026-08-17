@@ -15,7 +15,7 @@ export default function StickyMobileContact() {
         </a>
         <a
           href={siteConfig.email.href}
-          className="flex items-center justify-center gap-2 py-4 font-medium text-nebel bg-signalorange"
+          className="flex items-center justify-center gap-2 py-4 font-semibold text-graphit bg-safran"
         >
           <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
             <rect x="3" y="5" width="18" height="14" rx="1" />

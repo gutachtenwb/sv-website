@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import { fotos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Lackschichtdickenmessung",
@@ -60,7 +61,15 @@ export default function LackschichtdickenmessungPage() {
             ))}
           </div>
         </div>
-        <ImagePlaceholder label="Lackschichtdickenmessung am Fahrzeug" className="h-full min-h-[18rem]" />
+        <div className="relative h-full min-h-[18rem]">
+          <Image
+            src={fotos.halleUebersicht.src}
+            alt={fotos.halleUebersicht.alt}
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover"
+          />
+        </div>
       </section>
 
       <section className="bg-graphit text-nebel">
@@ -69,7 +78,7 @@ export default function LackschichtdickenmessungPage() {
           <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3">
             {einsatz.map((e) => (
               <li key={e} className="flex items-start gap-2 text-sm text-nebel/80">
-                <span className="text-signalorange mt-1">—</span>
+                <span className="text-safran mt-1">—</span>
                 <span>{e}</span>
               </li>
             ))}

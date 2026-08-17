@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import { fotos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Fahrzeugbewertung",
@@ -41,7 +42,7 @@ export default function FahrzeugbewertungPage() {
           <ul className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
             {anlaesse.map((a) => (
               <li key={a} className="flex items-start gap-2">
-                <span className="text-signalorange mt-1">—</span>
+                <span className="text-safran mt-1">—</span>
                 <span className="text-graphit/80">{a}</span>
               </li>
             ))}
@@ -52,7 +53,15 @@ export default function FahrzeugbewertungPage() {
             den jeweiligen Anlass und das konkrete Fahrzeug abgestimmt.
           </p>
         </div>
-        <ImagePlaceholder label="Fahrzeugbewertung / Zustandsprüfung" className="h-full min-h-[18rem]" />
+        <div className="relative h-full min-h-[18rem]">
+          <Image
+            src={fotos.halleUebersicht.src}
+            alt={fotos.halleUebersicht.alt}
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover"
+          />
+        </div>
       </section>
 
       <CTASection

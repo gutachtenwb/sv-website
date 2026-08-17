@@ -25,7 +25,7 @@ export default function FAQAccordion({ items }: { items: FAQItem[] }) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full flex items-center justify-between gap-6 py-5 text-left font-display font-medium text-graphit hover:text-stahlblau transition-colors"
+                className="w-full flex items-center justify-between gap-6 py-5 text-left font-display font-medium text-graphit hover:text-safran-dunkel transition-colors"
               >
                 <span>{item.question}</span>
                 <span

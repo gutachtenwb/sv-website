@@ -16,31 +16,56 @@
     overflow-wrap: break-word;
   }
   ::selection {
-    @apply bg-signalorange/20;
+    @apply bg-safran/25;
   }
   :focus-visible {
-    outline: 2px solid #E1622F;
+    outline: 2px solid #C6A24C;
     outline-offset: 3px;
   }
 }
 
 @layer components {
+  /* Eyebrow: kleines Gold-Element + zurückhaltender Label-Text.
+     So bleibt Gold sichtbar, ohne dass Fließtext in Gold gesetzt wird. */
   .eyebrow {
-    @apply font-mono text-xs tracking-[0.2em] uppercase text-stahlblau;
+    @apply inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-safran-dunkel;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block w-3 h-px bg-safran-dunkel;
+  }
+  .eyebrow-light {
+    @apply text-safran;
+  }
+  .eyebrow-light::before {
+    @apply bg-safran;
   }
 
   .rule {
-    @apply border-t border-messing/40;
+    @apply border-t border-messing/30;
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-signalorange text-nebel px-6 py-3 font-body font-medium
-           hover:bg-graphit transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 bg-safran text-graphit px-6 py-3 font-body font-semibold
+           hover:bg-graphit hover:text-nebel transition-colors duration-200;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 border border-graphit/30 text-graphit px-6 py-3 font-body font-medium
+    @apply inline-flex items-center justify-center gap-2 border border-graphit/30 text-graphit px-6 py-3 font-body font-medium
            hover:border-graphit transition-colors duration-200;
+  }
+
+  .btn-secondary-inverse {
+    @apply inline-flex items-center justify-center gap-2 border border-nebel/30 text-nebel px-6 py-3 font-body font-medium
+           hover:border-nebel transition-colors duration-200;
+  }
+
+  .link-accent {
+    @apply text-safran-dunkel hover:text-graphit transition-colors duration-200;
+  }
+
+  .link-accent-inverse {
+    @apply text-nebel/80 hover:text-safran transition-colors duration-200;
   }
 }
 

@@ -30,7 +30,7 @@ export function localBusinessSchema() {
     },
     additionalType: "https://www.wikidata.org/wiki/Q1354260",
     description:
-      "KFZ-Sachverständigenbüro in Villingen-Schwenningen für Unfallgutachten, Schadengutachten, Fahrzeugbewertung und technische Beweissicherung. ADAC Vertrags-Sachverständiger.",
+      "KFZ-Sachverständigenbüro mit eigenem Prüfzentrum in Villingen-Schwenningen: Unfallgutachten, Achsvermessung, 3D-Rahmenvermessung, Schadengutachten und Fahrzeugbewertung. ADAC Vertrags-Sachverständiger.",
   };
 }
 

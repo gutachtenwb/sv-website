@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import { fotos } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Unfallgutachten & Schadengutachten",
@@ -45,13 +46,21 @@ export default function UnfallgutachtenPage() {
           <ul className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
             {bestandteile.map((b) => (
               <li key={b} className="flex items-start gap-2">
-                <span className="text-signalorange mt-1">—</span>
+                <span className="text-safran mt-1">—</span>
                 <span className="text-graphit/80">{b}</span>
               </li>
             ))}
           </ul>
         </div>
-        <ImagePlaceholder label="Schadenaufnahme am Fahrzeug" className="h-full min-h-[20rem]" />
+        <div className="relative h-full min-h-[20rem]">
+          <Image
+            src={fotos.fahrzeugAufMessanlage.src}
+            alt={fotos.fahrzeugAufMessanlage.alt}
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover"
+          />
+        </div>
       </section>
 
       <section className="bg-graphit text-nebel">

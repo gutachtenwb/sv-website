@@ -9,10 +9,12 @@ const config: Config = {
     extend: {
       colors: {
         graphit: "#1C2226",
-        nebel: "#F1F3F1",
-        stahlblau: "#2F5D73",
-        signalorange: "#E1622F",
-        messing: "#9AA5A0",
+        graphittief: "#12161A",
+        nebel: "#F6F4EF",
+        messing: "#9A9488",
+        safran: "#C6A24C",
+        "safran-dunkel": "#7A5F29",
+        "safran-hell": "#E4CA8C",
       },
       fontFamily: {
         display: ["var(--font-space-grotesk)", "sans-serif"],

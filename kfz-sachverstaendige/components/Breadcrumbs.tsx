@@ -9,7 +9,7 @@ export default function Breadcrumbs({
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol className="flex flex-wrap items-center gap-1.5 text-xs text-graphit/50 font-mono">
         <li>
-          <Link href="/" className="hover:text-stahlblau">
+          <Link href="/" className="hover:text-safran-dunkel">
             Start
           </Link>
         </li>
@@ -21,7 +21,7 @@ export default function Breadcrumbs({
                 {item.name}
               </span>
             ) : (
-              <Link href={item.path} className="hover:text-stahlblau">
+              <Link href={item.path} className="hover:text-safran-dunkel">
                 {item.name}
               </Link>
             )}

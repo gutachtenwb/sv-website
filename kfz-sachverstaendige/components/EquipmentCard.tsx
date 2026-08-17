@@ -12,7 +12,7 @@ export default function EquipmentCard({ geraet, titel, text, einsatz, href }: Eq
   const content = (
     <>
       {geraet && (
-        <p className="font-mono text-xs uppercase tracking-wide text-signalorange mb-2">
+        <p className="font-mono text-xs uppercase tracking-wide text-safran mb-2">
           {geraet}
         </p>
       )}
@@ -21,13 +21,13 @@ export default function EquipmentCard({ geraet, titel, text, einsatz, href }: Eq
       <ul className="mt-4 space-y-1.5 text-sm text-nebel/80">
         {einsatz.map((e) => (
           <li key={e} className="flex items-start gap-2">
-            <span className="text-signalorange mt-0.5">—</span>
+            <span className="text-safran mt-0.5">—</span>
             <span>{e}</span>
           </li>
         ))}
       </ul>
       {href && (
-        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-signalorange">
+        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-safran">
           Mehr erfahren →
         </span>
       )}
@@ -38,7 +38,7 @@ export default function EquipmentCard({ geraet, titel, text, einsatz, href }: Eq
 
   if (href) {
     return (
-      <Link href={href} className={`${className} hover:border-signalorange/60 transition-colors`}>
+      <Link href={href} className={`${className} hover:border-safran/60 transition-colors`}>
         {content}
       </Link>
     );
