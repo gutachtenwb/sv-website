@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Datenschutz | Kfz-Sachverständigenbüro Mustermann",
+  title: "Datenschutz",
+  alternates: { canonical: "/datenschutz" },
+  robots: { index: true, follow: true },
 };
 
 export default function Datenschutz() {
   return (
     <div className="max-w-content mx-auto px-6 py-20 max-w-2xl">
-      <h1 className="text-3xl font-semibold">Datenschutzerklärung</h1>
+      <h1 className="text-3xl font-semibold break-words">Datenschutzerklärung</h1>
 
       <div className="mt-10 space-y-8 text-graphit/80 leading-relaxed text-sm">
         <section>
@@ -15,9 +18,9 @@ export default function Datenschutz() {
             1. Verantwortlicher
           </h2>
           <p>
-            Kfz-Sachverständigenbüro Mustermann, Dipl.-Ing. Max Mustermann,
-            Musterstraße 12, 12345 Musterstadt,
-            info@kfz-gutachten-mustermann.de
+            {siteConfig.companyName}, {siteConfig.contactPerson},{" "}
+            {siteConfig.address.street}, {siteConfig.address.zip}{" "}
+            {siteConfig.address.city}, {siteConfig.email.display}
           </p>
         </section>
 
@@ -49,7 +52,18 @@ export default function Datenschutz() {
 
         <section>
           <h2 className="font-display font-semibold text-graphit mb-2">
-            4. Ihre Rechte
+            4. Kontaktaufnahme per Telefon oder E-Mail
+          </h2>
+          <p>
+            Wenn Sie uns telefonisch oder per E-Mail kontaktieren, werden die
+            von Ihnen übermittelten Daten (z. B. Name, Kontaktdaten, Inhalt
+            der Anfrage) zur Bearbeitung Ihres Anliegens bei uns gespeichert.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display font-semibold text-graphit mb-2">
+            5. Ihre Rechte
           </h2>
           <p>
             Sie haben jederzeit das Recht auf Auskunft, Berichtigung,

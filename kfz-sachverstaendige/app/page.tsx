@@ -1,57 +1,73 @@
 import Link from "next/link";
 import PruefSiegel from "@/components/PruefSiegel";
+import TrustBadges from "@/components/TrustBadges";
+import ServiceCard from "@/components/ServiceCard";
+import EquipmentCard from "@/components/EquipmentCard";
+import ProcessSteps from "@/components/ProcessSteps";
+import CTASection from "@/components/CTASection";
+import { siteConfig } from "@/lib/site-config";
 
 const leistungen = [
   {
-    titel: "Unfallschadengutachten",
-    text: "Vollständige Schadenermittlung nach einem Verkehrsunfall — als Grundlage für Ihre Ansprüche gegenüber der Versicherung.",
+    href: "/leistungen/unfallgutachten",
+    titel: "Unfallgutachten",
+    text: "Vollständige Schadenaufnahme, Reparaturkosten, Wiederbeschaffungswert und Wertminderung nach einem Verkehrsunfall.",
   },
   {
+    href: "/leistungen/technische-beweissicherung",
+    titel: "Technische Beweissicherung",
+    text: "Über die reine Sichtprüfung hinaus: Messung, Diagnose und nachvollziehbare Dokumentation von Schäden.",
+  },
+  {
+    href: "/leistungen/fahrzeugbewertung",
     titel: "Fahrzeugbewertung",
-    text: "Marktwertermittlung für Kauf, Verkauf, Erbschaft oder Versicherungsfälle — nachvollziehbar und belastbar.",
+    text: "Marktwertermittlung für Kauf, Verkauf, Leasing oder Versicherungsfälle — nachvollziehbar dokumentiert.",
   },
   {
-    titel: "Zustandsbericht",
-    text: "Neutrale Dokumentation des Fahrzeugzustands vor Ankauf, Leasingrückgabe oder Übergabe.",
+    href: "/leistungen/kaufbegleitung",
+    titel: "Kaufbegleitung",
+    text: "Technischer Check vor dem Fahrzeugkauf — von der Karosserie bis zur elektronischen Diagnose.",
   },
   {
-    titel: "Oldtimerbewertung",
-    text: "Wertgutachten nach § 23 StVZO sowie klassische Bewertungen für historische Fahrzeuge.",
+    href: "/leistungen/oldtimer-youngtimer",
+    titel: "Oldtimer & Youngtimer",
+    text: "Zustands- und Wertermittlung für historische Fahrzeuge und Youngtimer.",
   },
-];
-
-const ablauf = [
-  { schritt: "01", titel: "Kontakt aufnehmen", text: "Sie schildern uns kurz den Fall — per Telefon, E-Mail oder Formular." },
-  { schritt: "02", titel: "Termin vereinbaren", text: "Wir vereinbaren einen Besichtigungstermin, bei Ihnen vor Ort oder in unserer Werkstatt." },
-  { schritt: "03", titel: "Begutachtung", text: "Fachgerechte Untersuchung, Fotodokumentation und Kalkulation des Schadens oder Werts." },
-  { schritt: "04", titel: "Gutachten erhalten", text: "Sie erhalten Ihr Gutachten binnen weniger Werktage — digital und in Papierform." },
+  {
+    href: "/leistungen/achsvermessung",
+    titel: "Achsvermessung",
+    text: "Prüfung der Fahrwerksgeometrie mit Beissbarth Q.Lign, insbesondere nach Radanstoß.",
+  },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Hero — im Layout eines Gutachten-Deckblatts */}
-      <section className="max-w-content mx-auto px-6 pt-16 pb-24">
+      {/* Hero */}
+      <section className="max-w-content mx-auto px-6 pt-14 pb-20 md:pt-20 md:pb-24">
         <div className="grid md:grid-cols-[1fr_auto] gap-12 items-start">
           <div>
-            <p className="eyebrow mb-4">Az. KSB / 2026 / öffentlich bestellt</p>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] max-w-2xl">
-              Unabhängige Kfz-Gutachten, die vor Gericht und Versicherung
-              Bestand haben.
+            <p className="eyebrow mb-4">
+              {siteConfig.adacStatus} · {siteConfig.address.city}
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold leading-[1.1] md:leading-[1.05] max-w-2xl break-words">
+              KFZ-Sachverständiger in Villingen-Schwenningen
             </h1>
-            <p className="mt-6 text-lg text-graphit/70 max-w-xl">
-              Unfallschaden, Fahrzeugwert oder Zustand — wir dokumentieren
-              präzise, neutral und schnell. Als öffentlich bestellter und
-              vereidigter Sachverständiger vertreten wir ausschließlich Ihre
-              Interessen.
+            <p className="mt-6 text-lg text-graphit/70 max-w-xl leading-relaxed">
+              Unfallgutachten, Fahrzeugbewertung und technische
+              Beweissicherung aus einer Hand — mit professioneller Prüf- und
+              Messtechnik für Karosserie, Achsen, Lack und Elektronik.
+            </p>
+            <p className="mt-4 font-display text-stahlblau font-medium">
+              Nicht nur ansehen – messen, prüfen und technisch belegen.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link href="/kontakt" className="btn-primary">
-                Gutachten anfragen
+                Termin vereinbaren
               </Link>
-              <Link href="/leistungen" className="btn-secondary">
-                Leistungen ansehen
-              </Link>
+              <a href={siteConfig.phone.href} className="btn-secondary">
+                Jetzt anrufen: {siteConfig.phone.display}
+              </a>
             </div>
           </div>
 
@@ -61,71 +77,85 @@ export default function Home() {
         <div className="rule mt-16" />
       </section>
 
-      {/* Kennzahlen / Vertrauen */}
-      <section className="max-w-content mx-auto px-6 pb-24 grid grid-cols-2 md:grid-cols-4 gap-8 font-mono">
-        {[
-          ["15+", "Jahre Erfahrung"],
-          ["3.000+", "erstellte Gutachten"],
-          ["48 Std.", "durchschnittliche Bearbeitung"],
-          ["100%", "unabhängig & neutral"],
-        ].map(([zahl, label]) => (
-          <div key={label}>
-            <p className="text-3xl font-semibold text-stahlblau">{zahl}</p>
-            <p className="text-xs uppercase tracking-wide text-graphit/60 mt-1">
-              {label}
-            </p>
-          </div>
-        ))}
+      {/* Trust */}
+      <section className="max-w-content mx-auto px-6 pb-24">
+        <TrustBadges />
       </section>
 
       {/* Leistungen */}
       <section className="max-w-content mx-auto px-6 pb-24">
         <p className="eyebrow mb-3">Leistungen</p>
         <h2 className="text-3xl font-semibold max-w-xl">
-          Gutachten für jeden Anlass
+          Gutachten und technische Untersuchungen für jeden Anlass
         </h2>
-        <div className="mt-10 grid md:grid-cols-2 gap-px bg-messing/30">
+        <p className="mt-4 text-graphit/70 max-w-2xl leading-relaxed">
+          Vom klassischen Unfallgutachten bis zur präzisen 3D-Vermessung —
+          hier finden Sie unser vollständiges Leistungsspektrum.
+        </p>
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-messing/30">
           {leistungen.map((l) => (
-            <div key={l.titel} className="bg-nebel p-8">
-              <h3 className="text-xl font-semibold font-display">{l.titel}</h3>
-              <p className="mt-3 text-graphit/70 leading-relaxed">{l.text}</p>
-            </div>
+            <ServiceCard key={l.href} href={l.href} titel={l.titel} text={l.text} />
           ))}
+        </div>
+        <div className="mt-8">
+          <Link href="/leistungen" className="btn-secondary">
+            Alle Leistungen ansehen
+          </Link>
         </div>
       </section>
 
-      {/* Ablauf — echte Reihenfolge, daher nummeriert */}
+      {/* Technische Ausstattung */}
       <section className="bg-graphit text-nebel">
         <div className="max-w-content mx-auto px-6 py-24">
-          <p className="eyebrow text-nebel/50 mb-3">Ablauf</p>
+          <p className="eyebrow text-nebel/50 mb-3">Technische Ausstattung</p>
           <h2 className="text-3xl font-semibold max-w-xl">
-            Vom Anruf zum fertigen Gutachten
+            Warum eine Sichtprüfung allein oft nicht ausreicht
           </h2>
-          <div className="mt-12 grid md:grid-cols-4 gap-10">
-            {ablauf.map((a) => (
-              <div key={a.schritt}>
-                <p className="font-mono text-signalorange text-sm">{a.schritt}</p>
-                <h3 className="mt-3 font-display font-semibold">{a.titel}</h3>
-                <p className="mt-2 text-sm text-nebel/70 leading-relaxed">
-                  {a.text}
-                </p>
-              </div>
-            ))}
+          <p className="mt-4 text-nebel/70 max-w-2xl leading-relaxed">
+            Ein Fahrzeug kann äußerlich unauffällig wirken und trotzdem
+            strukturelle Veränderungen aufweisen. Mit professioneller
+            Mess- und Diagnosetechnik lassen sich Schäden nicht nur
+            betrachten, sondern nachvollziehbar belegen.
+          </p>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-6">
+            <EquipmentCard
+              geraet="Spanesi Touch"
+              titel="3D-Karosserie- und Rahmenvermessung"
+              text="Vergleich von Soll- und Ist-Maßen zur Prüfung der Fahrzeugstruktur — etwa bei Strukturtreffern oder Verdacht auf Karosserieverformung."
+              einsatz={["Beweissicherung bei Unfällen mit höherer Krafteinwirkung", "Prüfung der Fahrzeugstruktur", "Dokumentation möglicher Verformungen"]}
+              href="/leistungen/karosserievermessung"
+            />
+            <EquipmentCard
+              geraet="Beissbarth Q.Lign"
+              titel="Professionelle Achsvermessung"
+              text="Technische Prüfung der Fahrwerksgeometrie — insbesondere sinnvoll nach einem Radanstoß, bei dem eine rein optische Prüfung oft nicht ausreicht."
+              einsatz={["Radanstoß und Bordsteinkontakt", "Verdacht auf veränderte Spur- oder Sturzwerte", "Beweissicherung bei Fahrwerksschäden"]}
+              href="/leistungen/achsvermessung"
+            />
+          </div>
+
+          <div className="mt-8">
+            <Link href="/technische-ausstattung" className="btn-secondary border-nebel/30 text-nebel hover:border-nebel">
+              Gesamte Ausstattung ansehen
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-content mx-auto px-6 py-24 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold max-w-xl mx-auto">
-          Schildern Sie uns Ihren Fall — unverbindlich und kostenfrei.
+      {/* Ablauf */}
+      <section className="max-w-content mx-auto px-6 py-24">
+        <p className="eyebrow mb-3">Ablauf</p>
+        <h2 className="text-3xl font-semibold max-w-xl">
+          Vom Kontakt zum fertigen Gutachten
         </h2>
-        <div className="mt-8">
-          <Link href="/kontakt" className="btn-primary">
-            Jetzt Kontakt aufnehmen
-          </Link>
-        </div>
+        <ProcessSteps variant="light" />
       </section>
+
+      <CTASection
+        title="Schildern Sie uns Ihren Fall."
+        text="Wir untersuchen Ihr Fahrzeug, dokumentieren den Zustand oder Schaden und erstellen ein nachvollziehbares Gutachten."
+      />
     </>
   );
 }

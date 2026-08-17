@@ -1,33 +1,57 @@
-# Kfz-Sachverständigenbüro — Website
+# KFZ-Sachverständigenbüro Württemberg — Website
 
-Website für ein Kfz-Sachverständigenbüro, gebaut mit Next.js 14 (App Router),
-TypeScript und Tailwind CSS.
+Website für das KFZ-Sachverständigenbüro Württemberg (Villingen-Schwenningen),
+gebaut mit Next.js 14 (App Router), TypeScript und Tailwind CSS.
+
+## Struktur
+
+Alle Unternehmens- und Kontaktdaten (Name, Adresse, Telefon, E-Mail, ADAC-Status)
+sind zentral in `lib/site-config.ts` gepflegt und werden von Header, Footer,
+Kontaktseite, Impressum, Datenschutz und den strukturierten Daten
+(`lib/schema.tsx`) importiert. Änderungen an Kontaktdaten müssen nur an
+dieser einen Stelle vorgenommen werden.
 
 ## Enthaltene Seiten
 
 - `/` – Startseite
-- `/leistungen` – Leistungsübersicht
+- `/leistungen` – Leistungsübersicht (Unfall & Schaden, Technische
+  Untersuchungen, Bewertung)
+- `/leistungen/unfallgutachten` – Unfall- & Schadengutachten, Reparaturbestätigung, Nachbesichtigung
+- `/leistungen/technische-beweissicherung` – Technische Beweissicherung
+- `/leistungen/karosserievermessung` – 3D-Karosserievermessung (Spanesi Touch)
+- `/leistungen/achsvermessung` – Achsvermessung (Beissbarth Q.Lign)
+- `/leistungen/lackschichtdickenmessung` – Lackschichtdickenmessung
+- `/leistungen/fahrzeugdiagnose` – Fahrzeugdiagnose / Fehlerspeicherauslese
+- `/leistungen/fahrzeugbewertung` – Fahrzeugbewertung
+- `/leistungen/oldtimer-youngtimer` – Oldtimer- & Youngtimerbewertung
+- `/leistungen/kaufbegleitung` – Kaufbegleitung / Fahrzeug-Check
+- `/technische-ausstattung` – Übersicht der technischen Ausstattung
 - `/ueber-uns` – Über das Büro
+- `/faq` – Häufige Fragen (mit FAQPage-Schema)
 - `/kontakt` – Kontaktformular
-- `/impressum` – Impressum (Pflichtangaben, mit Platzhaltern)
-- `/datenschutz` – Datenschutzerklärung (Grundgerüst, mit Platzhaltern)
+- `/impressum` – Impressum
+- `/datenschutz` – Datenschutzerklärung
 
-## Wichtig: Platzhalter ersetzen
+Zusätzlich vorhanden: `app/sitemap.ts`, `app/robots.ts`, `app/icon.svg` und
+`app/opengraph-image.tsx` (dynamisch generiertes Social-Preview-Bild über
+`next/og`, keine externe Bibliothek nötig).
 
-Die folgenden Angaben sind Platzhalter und müssen vor dem Livegang ersetzt
-werden:
+## Offene Punkte / noch zu ergänzen
 
-- Firmenname, Ansprechpartner, Adresse, Telefon, E-Mail
-  (in `components/Header.tsx`, `components/Footer.tsx`, `app/page.tsx`,
-  `app/kontakt/page.tsx`, `app/ueber-uns/page.tsx`)
-- Alle Angaben in `app/impressum/page.tsx` (rechtlich verpflichtend, im
-  Zweifel anwaltlich prüfen lassen)
-- Angaben in `app/datenschutz/page.tsx`, sobald weitere Dienste (z. B.
-  Formular-Versand, Analyse-Tools) hinzukommen
-
-Das Kontaktformular ist aktuell nur clientseitig aufgebaut und versendet
-noch keine E-Mails. Dafür kann später z. B. eine Next.js API-Route oder ein
-Dienst wie Formspree/Resend angebunden werden.
+- **Reale Fotos**: Es sind noch keine echten Fotos vom Betrieb, der
+  Prüfhalle oder der Messtechnik vorhanden. Entsprechende Stellen sind im
+  Code mit der Komponente `ImagePlaceholder` deutlich markiert (Text
+  „Foto folgt: …") und sollten durch reale Aufnahmen ersetzt werden.
+- **Impressum**: Die Umsatzsteuer-Identifikationsnummer ist noch nicht
+  hinterlegt (`app/impressum/page.tsx`) und muss ergänzt werden.
+- **Produktions-Domain**: `lib/site-config.ts` ermittelt die Basis-URL für
+  Sitemap, robots.txt und OpenGraph automatisch über Vercel-Umgebungsvariablen.
+  Für eine eigene Domain sollte zusätzlich `NEXT_PUBLIC_SITE_URL` in den
+  Vercel-Projekteinstellungen gesetzt werden (z. B.
+  `https://www.kfz-sv-wuerttemberg.de`).
+- **Kontaktformular**: Ist aktuell nur clientseitig aufgebaut und versendet
+  noch keine E-Mails. Für echten Versand z. B. eine Next.js API-Route oder
+  einen Dienst wie Formspree/Resend anbinden.
 
 ## Lokale Entwicklung
 
@@ -40,10 +64,5 @@ Die Seite ist danach unter `http://localhost:3000` erreichbar.
 
 ## Deployment
 
-Das Projekt ist für ein Deployment über Vercel vorbereitet:
-
-1. Repository auf GitHub veröffentlichen (bzw. bereits erledigt)
-2. Auf [vercel.com](https://vercel.com) mit dem GitHub-Konto anmelden
-3. „Add New… → Project" wählen und dieses Repository importieren
-4. Vercel erkennt Next.js automatisch — Standardeinstellungen übernehmen
-   und auf „Deploy" klicken
+Das Projekt ist mit Vercel verbunden. Ein Push auf den Hauptbranch löst
+automatisch ein Deployment aus.

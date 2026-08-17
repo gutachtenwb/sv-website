@@ -5,12 +5,15 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
     @apply bg-nebel text-graphit font-body antialiased;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4 {
     @apply font-display;
+    overflow-wrap: break-word;
   }
   ::selection {
     @apply bg-signalorange/20;

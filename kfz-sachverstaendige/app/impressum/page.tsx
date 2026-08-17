@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Impressum | Kfz-Sachverständigenbüro Mustermann",
+  title: "Impressum",
+  alternates: { canonical: "/impressum" },
+  robots: { index: true, follow: true },
 };
 
 export default function Impressum() {
@@ -15,33 +18,31 @@ export default function Impressum() {
             Angaben gemäß § 5 TMG
           </h2>
           <p>
-            Kfz-Sachverständigenbüro Mustermann
+            {siteConfig.companyName}
             <br />
-            Dipl.-Ing. Max Mustermann
+            {siteConfig.contactPerson}
             <br />
-            Musterstraße 12
+            {siteConfig.address.street}
             <br />
-            12345 Musterstadt
+            {siteConfig.address.zip} {siteConfig.address.city}
           </p>
         </section>
 
         <section>
           <h2 className="font-display font-semibold text-graphit mb-2">Kontakt</h2>
           <p>
-            Telefon: 01234 / 567 890
+            Telefon: {siteConfig.phone.display}
             <br />
-            E-Mail: info@kfz-gutachten-mustermann.de
+            E-Mail: {siteConfig.email.display}
           </p>
         </section>
 
         <section>
           <h2 className="font-display font-semibold text-graphit mb-2">
-            Berufsbezeichnung
+            Tätigkeitsbezeichnung
           </h2>
           <p>
-            Öffentlich bestellter und vereidigter Sachverständiger für das
-            Kfz-Wesen, verliehen durch die Muster-IHK (Platzhalter — bitte
-            durch die tatsächliche Bestellungskörperschaft ersetzen).
+            Kfz-Sachverständiger · {siteConfig.adacStatus}
           </p>
         </section>
 
@@ -50,16 +51,16 @@ export default function Impressum() {
             Umsatzsteuer-ID
           </h2>
           <p>
-            Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE
-            000000000 (Platzhalter)
+            Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: wird
+            ergänzt.
           </p>
         </section>
 
         <section>
           <h2 className="font-display font-semibold text-graphit mb-2">
-            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+            Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
           </h2>
-          <p>Dipl.-Ing. Max Mustermann, Anschrift wie oben</p>
+          <p>{siteConfig.contactPerson}, Anschrift wie oben</p>
         </section>
 
         <section>
@@ -68,18 +69,25 @@ export default function Impressum() {
           </h2>
           <p>
             Die Europäische Kommission stellt eine Plattform zur
-            Online-Streitbeilegung (OS) bereit. Wir sind zur Teilnahme an
-            einem Streitbeilegungsverfahren vor einer
-            Verbraucherschlichtungsstelle nicht verpflichtet und nicht
+            Online-Streitbeilegung (OS) bereit:{" "}
+            <a
+              href="https://ec.europa.eu/consumers/odr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stahlblau hover:underline"
+            >
+              ec.europa.eu/consumers/odr
+            </a>
+            . Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor
+            einer Verbraucherschlichtungsstelle nicht verpflichtet und nicht
             bereit.
           </p>
         </section>
       </div>
 
       <p className="mt-16 text-xs text-graphit/40 font-mono">
-        Hinweis: Diese Seite enthält Platzhaltertexte. Bitte durch die
-        tatsächlichen, rechtlich korrekten Angaben ersetzen — im Zweifel
-        anwaltlich prüfen lassen.
+        Hinweis: Die Umsatzsteuer-Identifikationsnummer wird nach Vorliegen
+        ergänzt. Diese Seite ersetzt keine anwaltliche Prüfung.
       </p>
     </div>
   );
