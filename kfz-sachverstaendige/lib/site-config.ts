@@ -54,37 +54,38 @@ export const siteConfig = {
         : "http://localhost:3000"),
 } as const;
 
+// Bewusst schlanke Hauptnavigation. Die einzelnen Leistungsseiten
+// (/leistungen/...) bestehen technisch weiterhin für SEO und Detailinfos,
+// tauchen aber nicht mehr als Dropdown in der Hauptnavigation auf.
 export const navItems = [
-  { href: "/", label: "Startseite" },
-  {
-    href: "/leistungen",
-    label: "Leistungen",
-    children: [
-      { href: "/leistungen/unfallgutachten", label: "Unfallgutachten" },
-      {
-        href: "/leistungen/technische-beweissicherung",
-        label: "Technische Beweissicherung",
-      },
-      {
-        href: "/leistungen/karosserievermessung",
-        label: "3D-Karosserievermessung",
-      },
-      { href: "/leistungen/achsvermessung", label: "Achsvermessung" },
-      {
-        href: "/leistungen/lackschichtdickenmessung",
-        label: "Lackschichtdickenmessung",
-      },
-      { href: "/leistungen/fahrzeugdiagnose", label: "Fahrzeugdiagnose" },
-      { href: "/leistungen/fahrzeugbewertung", label: "Fahrzeugbewertung" },
-      {
-        href: "/leistungen/oldtimer-youngtimer",
-        label: "Oldtimer & Youngtimer",
-      },
-      { href: "/leistungen/kaufbegleitung", label: "Kaufbegleitung" },
-    ],
-  },
-  { href: "/technische-ausstattung", label: "Ausstattung" },
+  { href: "/leistungen", label: "Leistungen" },
+  { href: "/pruefzentrum", label: "Prüfzentrum" },
   { href: "/ueber-uns", label: "Über uns" },
-  { href: "/faq", label: "FAQ" },
   { href: "/kontakt", label: "Kontakt" },
+] as const;
+
+// Vollständige Leistungsliste für Footer, Sitemap-Verlinkung und die
+// Leistungsübersichtsseite.
+export const leistungenLinks = [
+  { href: "/leistungen/unfallgutachten", label: "Unfallgutachten" },
+  {
+    href: "/leistungen/technische-beweissicherung",
+    label: "Technische Beweissicherung",
+  },
+  {
+    href: "/leistungen/karosserievermessung",
+    label: "3D-Karosserievermessung",
+  },
+  { href: "/leistungen/achsvermessung", label: "Achsvermessung" },
+  {
+    href: "/leistungen/lackschichtdickenmessung",
+    label: "Lackschichtdickenmessung",
+  },
+  { href: "/leistungen/fahrzeugdiagnose", label: "Fahrzeugdiagnose" },
+  { href: "/leistungen/fahrzeugbewertung", label: "Fahrzeugbewertung" },
+  {
+    href: "/leistungen/oldtimer-youngtimer",
+    label: "Oldtimer & Youngtimer",
+  },
+  { href: "/leistungen/kaufbegleitung", label: "Kaufbegleitung" },
 ] as const;

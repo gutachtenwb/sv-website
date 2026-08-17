@@ -101,7 +101,7 @@ export default function TechnischeBeweissicherungPage() {
         </div>
       </section>
 
-      <section className="max-w-content mx-auto px-6 py-16 max-w-3xl">
+      <section className="max-w-3xl mx-auto px-6 py-16">
         <h2 className="text-2xl font-semibold font-display">
           Plausibilitäts- und Kompatibilitätsprüfung
         </h2>

@@ -3,13 +3,11 @@ import Image from "next/image";
 import { navItems, siteConfig } from "@/lib/site-config";
 import { logos } from "@/lib/images";
 
-const leistungenLinks = navItems.find((item) => item.href === "/leistungen");
-
 export default function Footer() {
   return (
     <footer className="bg-graphit text-nebel mt-24 md:mt-32 pb-20 md:pb-0">
-      <div className="max-w-content mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
-        <div className="md:col-span-1">
+      <div className="max-w-content mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
+        <div>
           <Image
             src={logos.markWeiss.src}
             alt={logos.markWeiss.alt}
@@ -45,38 +43,15 @@ export default function Footer() {
         </div>
 
         <div className="text-sm">
-          <p className="eyebrow eyebrow-light mb-3">Leistungen</p>
+          <p className="eyebrow eyebrow-light mb-3">Navigation</p>
           <ul className="space-y-2 text-nebel/80">
-            {leistungenLinks && "children" in leistungenLinks && leistungenLinks.children
-              ?.slice(0, 6)
-              .map((child) => (
-                <li key={child.href}>
-                  <Link href={child.href} className="link-accent-inverse">
-                    {child.label}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-        </div>
-
-        <div className="text-sm">
-          <p className="eyebrow eyebrow-light mb-3">Unternehmen</p>
-          <ul className="space-y-2 text-nebel/80">
-            <li>
-              <Link href="/ueber-uns" className="link-accent-inverse">
-                Über uns
-              </Link>
-            </li>
-            <li>
-              <Link href="/technische-ausstattung" className="link-accent-inverse">
-                Technische Ausstattung
-              </Link>
-            </li>
-            <li>
-              <Link href="/faq" className="link-accent-inverse">
-                FAQ
-              </Link>
-            </li>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="link-accent-inverse">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             <li>
               <Link href="/impressum" className="link-accent-inverse">
                 Impressum
@@ -88,34 +63,6 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-        </div>
-      </div>
-
-      {/* Qualifikationen — bewusst kompakt, kein Logo-Wall */}
-      <div className="border-t border-nebel/10">
-        <div className="max-w-content mx-auto px-6 py-8 flex flex-wrap items-center gap-x-10 gap-y-4">
-          <span className="text-xs font-mono uppercase tracking-wide text-nebel/40">
-            Qualifikationen
-          </span>
-          <Image
-            src={logos.adacBadge.src}
-            alt={logos.adacBadge.alt}
-            className="h-14 w-auto"
-          />
-          <div className="bg-nebel px-3 py-2">
-            <Image
-              src={logos.vks.src}
-              alt={logos.vks.alt}
-              className="h-9 w-auto"
-            />
-          </div>
-          <div className="bg-nebel px-3 py-2">
-            <Image
-              src={logos.handwerkskammer.src}
-              alt={logos.handwerkskammer.alt}
-              className="h-6 w-auto"
-            />
-          </div>
         </div>
       </div>
 

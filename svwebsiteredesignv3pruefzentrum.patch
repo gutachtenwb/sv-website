@@ -1,0 +1,1314 @@
+diff --git a/kfz-sachverstaendige/app/datenschutz/page.tsx b/kfz-sachverstaendige/app/datenschutz/page.tsx
+index e4ec39e..dbb75b7 100644
+--- a/kfz-sachverstaendige/app/datenschutz/page.tsx
++++ b/kfz-sachverstaendige/app/datenschutz/page.tsx
+@@ -9,7 +9,7 @@ export const metadata: Metadata = {
+ 
+ export default function Datenschutz() {
+   return (
+-    <div className="max-w-content mx-auto px-6 py-20 max-w-2xl">
++    <div className="max-w-2xl mx-auto px-6 py-20">
+       <h1 className="text-3xl font-semibold break-words">Datenschutzerklärung</h1>
+ 
+       <div className="mt-10 space-y-8 text-graphit/80 leading-relaxed text-sm">
+diff --git a/kfz-sachverstaendige/app/faq/page.tsx b/kfz-sachverstaendige/app/faq/page.tsx
+index 2073962..9eff850 100644
+--- a/kfz-sachverstaendige/app/faq/page.tsx
++++ b/kfz-sachverstaendige/app/faq/page.tsx
+@@ -140,7 +140,7 @@ export default function FAQPage() {
+         breadcrumbs={[{ name: "FAQ", path: "/faq" }]}
+       />
+ 
+-      <section className="max-w-content mx-auto px-6 pb-16 max-w-3xl">
++      <section className="max-w-3xl mx-auto px-6 pb-16">
+         <FAQAccordion items={faqItems} />
+       </section>
+ 
+diff --git a/kfz-sachverstaendige/app/impressum/page.tsx b/kfz-sachverstaendige/app/impressum/page.tsx
+index d6abc2f..04f9c06 100644
+--- a/kfz-sachverstaendige/app/impressum/page.tsx
++++ b/kfz-sachverstaendige/app/impressum/page.tsx
+@@ -9,7 +9,7 @@ export const metadata: Metadata = {
+ 
+ export default function Impressum() {
+   return (
+-    <div className="max-w-content mx-auto px-6 py-20 max-w-2xl">
++    <div className="max-w-2xl mx-auto px-6 py-20">
+       <h1 className="text-3xl font-semibold">Impressum</h1>
+ 
+       <div className="mt-10 space-y-8 text-graphit/80 leading-relaxed text-sm">
+diff --git a/kfz-sachverstaendige/app/leistungen/page.tsx b/kfz-sachverstaendige/app/leistungen/page.tsx
+index c690655..6537f5b 100644
+--- a/kfz-sachverstaendige/app/leistungen/page.tsx
++++ b/kfz-sachverstaendige/app/leistungen/page.tsx
+@@ -1,7 +1,32 @@
+ import type { Metadata } from "next";
++import Link from "next/link";
+ import PageHero from "@/components/PageHero";
+ import ServiceCard from "@/components/ServiceCard";
+ import CTASection from "@/components/CTASection";
++import FAQAccordion from "@/components/FAQAccordion";
++
++const faqAuswahl = [
++  {
++    question: "Wann benötige ich ein Unfallgutachten?",
++    answer:
++      "Ein Unfallgutachten ist grundsätzlich sinnvoll, wenn ein Fahrzeug bei einem Verkehrsunfall beschädigt wurde und der Schadenumfang, die Reparaturkosten oder eine mögliche Wertminderung nachvollziehbar dokumentiert werden sollen. Bei sehr geringen Schäden kann unter Umständen bereits ein Kostenvoranschlag ausreichen.",
++  },
++  {
++    question: "Wer bezahlt das Gutachten bei einem unverschuldeten Unfall?",
++    answer:
++      "Bei einem unverschuldeten Haftpflichtschaden werden die Kosten des Gutachtens in der Regel im Rahmen der Schadenregulierung von der gegnerischen Versicherung übernommen, sofern die Voraussetzungen dafür vorliegen. Eine allgemeingültige Zusage können wir dazu nicht treffen, da dies vom Einzelfall abhängt.",
++  },
++  {
++    question: "Wann ist eine Achsvermessung sinnvoll?",
++    answer:
++      "Insbesondere nach einem Radanstoß, Bordsteinkontakt oder einem Unfall im Radbereich kann eine Achsvermessung mit Beissbarth Q.Lign sinnvoll sein, da eine rein optische Prüfung veränderte Spur- oder Sturzwerte nicht immer zuverlässig erkennen lässt.",
++  },
++  {
++    question: "Wie läuft eine Fahrzeugbegutachtung ab?",
++    answer:
++      "Nach der Kontaktaufnahme vereinbaren wir einen Besichtigungstermin. Das Fahrzeug wird untersucht und der Schaden bzw. Zustand dokumentiert. Bei Bedarf erfolgen ergänzende technische Messungen im Prüfzentrum. Anschließend erstellen wir das Gutachten.",
++  },
++];
+ 
+ export const metadata: Metadata = {
+   title: "Leistungen",
+@@ -114,6 +139,21 @@ export default function LeistungenPage() {
+         </section>
+       </div>
+ 
++      <div className="max-w-content mx-auto px-6 pb-20">
++        <div className="max-w-3xl">
++          <p className="eyebrow mb-2">Häufige Fragen</p>
++          <h2 className="text-2xl font-semibold font-display mb-8">
++            Kurz beantwortet
++          </h2>
++          <FAQAccordion items={faqAuswahl} />
++          <div className="mt-8">
++            <Link href="/faq" className="btn-secondary">
++              Alle Fragen ansehen
++            </Link>
++          </div>
++        </div>
++      </div>
++
+       <CTASection
+         title="Nicht sicher, welche Leistung passt?"
+         text="Schildern Sie uns kurz Ihr Anliegen — wir sagen Ihnen, welches Vorgehen sinnvoll ist."
+diff --git a/kfz-sachverstaendige/app/leistungen/technische-beweissicherung/page.tsx b/kfz-sachverstaendige/app/leistungen/technische-beweissicherung/page.tsx
+index 2944ec1..f3632dc 100644
+--- a/kfz-sachverstaendige/app/leistungen/technische-beweissicherung/page.tsx
++++ b/kfz-sachverstaendige/app/leistungen/technische-beweissicherung/page.tsx
+@@ -101,7 +101,7 @@ export default function TechnischeBeweissicherungPage() {
+         </div>
+       </section>
+ 
+-      <section className="max-w-content mx-auto px-6 py-16 max-w-3xl">
++      <section className="max-w-3xl mx-auto px-6 py-16">
+         <h2 className="text-2xl font-semibold font-display">
+           Plausibilitäts- und Kompatibilitätsprüfung
+         </h2>
+diff --git a/kfz-sachverstaendige/app/leistungen/unfallgutachten/page.tsx b/kfz-sachverstaendige/app/leistungen/unfallgutachten/page.tsx
+index d83f1a3..6b6bbfe 100644
+--- a/kfz-sachverstaendige/app/leistungen/unfallgutachten/page.tsx
++++ b/kfz-sachverstaendige/app/leistungen/unfallgutachten/page.tsx
+@@ -64,7 +64,7 @@ export default function UnfallgutachtenPage() {
+       </section>
+ 
+       <section className="bg-graphit text-nebel">
+-        <div className="max-w-content mx-auto px-6 py-16 max-w-3xl">
++        <div className="max-w-3xl mx-auto px-6 py-16">
+           <h2 className="text-2xl font-semibold font-display">
+             Wer beauftragt den Sachverständigen?
+           </h2>
+diff --git a/kfz-sachverstaendige/app/page.tsx b/kfz-sachverstaendige/app/page.tsx
+index 8178411..bf5521e 100644
+--- a/kfz-sachverstaendige/app/page.tsx
++++ b/kfz-sachverstaendige/app/page.tsx
+@@ -1,76 +1,71 @@
+ import Link from "next/link";
+ import Image from "next/image";
+ import TrustBadges from "@/components/TrustBadges";
+-import ServiceCard from "@/components/ServiceCard";
+-import UspCard from "@/components/UspCard";
+-import ProcessSteps from "@/components/ProcessSteps";
+-import CTASection from "@/components/CTASection";
++import LeistungCard from "@/components/LeistungCard";
++import QualificationsBar from "@/components/QualificationsBar";
++import RegionSection from "@/components/RegionSection";
++import ReviewsSection from "@/components/ReviewsSection";
++import BigContactCTA from "@/components/BigContactCTA";
+ import { siteConfig } from "@/lib/site-config";
+ import { fotos } from "@/lib/images";
+ 
+-const usp = [
+-  {
+-    tag: "Beissbarth Q.Lign",
+-    titel: "Achsvermessung",
+-    text: "Technische Prüfung der Fahrwerksgeometrie — insbesondere nach Radanstoß oder Bordsteinkontakt.",
+-    image: fotos.pruefstand,
+-  },
+-  {
+-    tag: "Spanesi Touch",
+-    titel: "3D-Rahmenvermessung",
+-    text: "Vergleich von Soll- und Ist-Maßen zur Prüfung der Karosserie- und Fahrzeugstruktur.",
+-    image: fotos.fahrzeugAufMessanlageWeit,
+-  },
++const leistungen = [
+   {
+-    tag: "Schadenfeststellung",
+-    titel: "Zerlegungsarbeiten",
+-    text: "Freilegung beschädigter Bereiche zur technischen Beurteilung verdeckter Schäden.",
++    nummer: "01",
++    titel: "Schadengutachten",
++    text: "Schadenaufnahme, Reparaturkosten und Wertminderung nach einem Unfall — nachvollziehbar dokumentiert.",
++    href: "/leistungen/unfallgutachten",
+     image: fotos.technischeUntersuchung,
+   },
+   {
+-    tag: "Dokumentation",
+-    titel: "Technische Beweissicherung",
+-    text: "Nachvollziehbare Messung, Diagnose und Fotodokumentation über die Sichtprüfung hinaus.",
+-    image: fotos.halleUebersicht,
++    nummer: "02",
++    titel: "Fahrzeugbewertung",
++    text: "Marktwertermittlung für Kauf, Verkauf, Leasing und Versicherungsfälle.",
++    href: "/leistungen/fahrzeugbewertung",
++    // Kein passendes Originalfoto vorhanden — bewusst Platzhalter statt
++    // eines nicht zutreffenden Bildes. Motiv ergänzen, sobald verfügbar.
++    image: undefined,
+   },
+-];
+-
+-const leistungen = [
+   {
+-    href: "/leistungen/karosserievermessung",
+-    titel: "3D-Karosserievermessung",
+-    text: "Rahmen- und Strukturvermessung mit Spanesi Touch bei Verdacht auf Strukturschäden.",
+-    tag: "Prüfzentrum",
++    nummer: "03",
++    titel: "Zustandsbewertung",
++    text: "Technischer Check von Karosserie, Lack und Fahrwerk vor dem Fahrzeugkauf.",
++    href: "/leistungen/kaufbegleitung",
++    image: undefined,
+   },
+   {
+-    href: "/leistungen/achsvermessung",
++    nummer: "04",
+     titel: "Achsvermessung",
+     text: "Prüfung der Fahrwerksgeometrie mit Beissbarth Q.Lign, insbesondere nach Radanstoß.",
+-    tag: "Prüfzentrum",
+-  },
+-  {
+-    href: "/leistungen/technische-beweissicherung",
+-    titel: "Technische Beweissicherung",
+-    text: "Über die reine Sichtprüfung hinaus: Messung, Diagnose und nachvollziehbare Dokumentation von Schäden.",
+-    tag: "Prüfzentrum",
+-  },
+-  {
+-    href: "/leistungen/unfallgutachten",
+-    titel: "Unfallgutachten",
+-    text: "Vollständige Schadenaufnahme, Reparaturkosten, Wiederbeschaffungswert und Wertminderung nach einem Verkehrsunfall.",
++    href: "/leistungen/achsvermessung",
++    image: fotos.pruefstand,
+   },
+   {
+-    href: "/leistungen/fahrzeugbewertung",
+-    titel: "Fahrzeugbewertung",
+-    text: "Marktwertermittlung für Kauf, Verkauf, Leasing oder Versicherungsfälle — nachvollziehbar dokumentiert.",
++    nummer: "05",
++    titel: "3D-Karosserie- / Rahmenvermessung",
++    text: "Vergleich von Soll- und Ist-Maßen mit Spanesi Touch bei Verdacht auf Strukturschäden.",
++    href: "/leistungen/karosserievermessung",
++    image: fotos.fahrzeugAufMessanlageWeit,
+   },
+   {
+-    href: "/leistungen/oldtimer-youngtimer",
+-    titel: "Oldtimer & Youngtimer",
+-    text: "Zustands- und Wertermittlung für historische Fahrzeuge und Youngtimer.",
++    nummer: "06",
++    titel: "Technische Beweissicherung",
++    text: "Messung, Diagnose und Fotodokumentation über die Sichtprüfung hinaus.",
++    href: "/leistungen/technische-beweissicherung",
++    image: fotos.halleUebersicht,
+   },
+ ];
+ 
++const pruefzentrumPunkte = [
++  "Achsvermessung",
++  "3D-Karosserie- und Strukturvermessung (Spanesi Touch)",
++  "Fahrzeugdiagnose / Fehlerspeicherauslese",
++  "Untersuchung auf der Hebebühne",
++  "Freilegungs- und Demontagearbeiten",
++  "Lackschichtdickenmessung",
++  "Spaltmaß- und Karosserieprüfung",
++];
++
+ export default function Home() {
+   return (
+     <>
+@@ -78,31 +73,34 @@ export default function Home() {
+       <section className="relative bg-graphit text-nebel overflow-hidden">
+         <div className="flex flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-stretch">
+           <div className="order-2 lg:order-1 px-6 py-14 md:py-20 lg:py-0 lg:pl-[max(1.5rem,calc((100vw-1180px)/2))] lg:pr-14 flex flex-col justify-center">
+-            <p className="eyebrow eyebrow-light">
+-              {siteConfig.adacStatus} · {siteConfig.address.city}
+-            </p>
+-            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.08] max-w-xl break-words">
+-              Kfz-Sachverständige mit eigenem Prüfzentrum.
++            <h1 className="text-4xl sm:text-5xl font-semibold leading-[1.15] max-w-xl [overflow-wrap:normal]">
++              Kfz-Sachverständigen&shy;büro
++              <br className="hidden sm:block" /> &amp; Prüfzentrum in
++              Villingen-Schwenningen.
+             </h1>
+             <p className="mt-6 text-lg text-nebel/75 max-w-lg leading-relaxed">
+-              Unabhängige Kfz-Gutachten und technische Fahrzeuguntersuchungen
+-              in {siteConfig.address.city} — mit Achsvermessung, 3D-Rahmenvermessung
+-              und Hebebühnen im eigenen Haus.
++              Unabhängige Schaden- und Fahrzeugbewertungen — ergänzt durch
++              technische Untersuchungsmöglichkeiten direkt an unserem
++              Standort.
++            </p>
++            <p className="mt-5 font-mono text-xs uppercase tracking-[0.15em] text-safran">
++              Achsvermessung · 3D-Karosserievermessung · Fahrzeugdiagnose ·
++              technische Demontage
+             </p>
+             <div className="mt-10 flex flex-wrap gap-4">
+               <Link href="/kontakt" className="btn-primary">
+                 Termin vereinbaren
+               </Link>
+               <a href={siteConfig.phone.href} className="btn-secondary-inverse">
+-                Jetzt anrufen: {siteConfig.phone.display}
++                Kontakt aufnehmen
+               </a>
+             </div>
+           </div>
+ 
+           <div className="order-1 lg:order-2 relative h-[52vh] min-h-[360px] lg:h-auto lg:min-h-[640px]">
+             <Image
+-              src={fotos.fahrzeugAufMessanlage.src}
+-              alt={fotos.fahrzeugAufMessanlage.alt}
++              src={fotos.gebaeude.src}
++              alt={fotos.gebaeude.alt}
+               fill
+               priority
+               sizes="(min-width: 1024px) 55vw, 100vw"
+@@ -114,31 +112,19 @@ export default function Home() {
+       </section>
+ 
+       {/* Trust */}
+-      <section className="max-w-content mx-auto px-6 py-10 md:py-12">
++      <section className="max-w-content mx-auto px-6 py-14 md:py-16">
+         <TrustBadges />
+       </section>
+ 
+-      {/* USP */}
++      {/* Leistungen */}
+       <section className="max-w-content mx-auto px-6 py-16 md:py-24">
+-        <p className="eyebrow mb-3">Mehr als ein Gutachten</p>
++        <p className="eyebrow mb-3">Leistungen</p>
+         <h2 className="text-3xl md:text-4xl font-semibold max-w-xl">
+-          Wenn Sichtprüfung allein nicht ausreicht
++          Wie können wir Sie unterstützen?
+         </h2>
+-        <p className="mt-4 text-graphit/70 max-w-2xl leading-relaxed">
+-          Bei komplexen Fahrzeugschäden reicht eine reine Sichtprüfung nicht
+-          immer aus. In unserem eigenen Prüfzentrum stehen professionelle
+-          Mess- und Prüfmöglichkeiten zur Verfügung.
+-        </p>
+-        <div className="mt-12 grid sm:grid-cols-2 gap-x-8 gap-y-12">
+-          {usp.map((u) => (
+-            <UspCard
+-              key={u.titel}
+-              image={u.image.src}
+-              imageAlt={u.image.alt}
+-              tag={u.tag}
+-              titel={u.titel}
+-              text={u.text}
+-            />
++        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
++          {leistungen.map((l) => (
++            <LeistungCard key={l.href} {...l} />
+           ))}
+         </div>
+       </section>
+@@ -149,38 +135,34 @@ export default function Home() {
+           <div className="order-2 lg:order-1">
+             <p className="eyebrow eyebrow-light mb-3">Unser Prüfzentrum</p>
+             <h2 className="text-3xl md:text-4xl font-semibold max-w-lg">
+-              Technik, die Schäden sichtbar macht
++              Technische Untersuchungen direkt an unserem Standort
+             </h2>
+             <p className="mt-4 text-nebel/70 max-w-lg leading-relaxed">
+-              Reicht eine äußere Besichtigung nicht aus, untersuchen wir Ihr
+-              Fahrzeug im eigenen Prüfzentrum weiter — mit Messtechnik, die
+-              über den bloßen Blick hinausgeht.
++              Unser Prüfzentrum ermöglicht weiterführende technische
++              Untersuchungen, die über eine rein visuelle Fahrzeugbesichtigung
++              hinausgehen.
+             </p>
+-            <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3">
+-              {[
+-                "Achsgeometrie",
+-                "Karosserie- / Rahmenvermessung",
+-                "Freilegung beschädigter Bereiche",
+-                "Hebebühnenprüfung",
+-                "Diagnose & technische Dokumentation",
+-              ].map((punkt) => (
+-                <li key={punkt} className="flex items-start gap-2 text-sm text-nebel/80">
+-                  <span className="text-safran mt-1">—</span>
+-                  <span>{punkt}</span>
+-                </li>
++            <div className="mt-8 flex flex-wrap gap-2.5">
++              {pruefzentrumPunkte.map((punkt) => (
++                <span
++                  key={punkt}
++                  className="text-sm border border-nebel/25 px-4 py-2"
++                >
++                  {punkt}
++                </span>
+               ))}
+-            </ul>
++            </div>
+             <div className="mt-10">
+-              <Link href="/technische-ausstattung" className="btn-secondary-inverse">
+-                Gesamte Ausstattung ansehen
++              <Link href="/pruefzentrum" className="btn-secondary-inverse">
++                Prüfzentrum im Detail
+               </Link>
+             </div>
+           </div>
+ 
+-          <div className="order-1 lg:order-2 relative aspect-[4/3] lg:aspect-auto lg:h-[520px]">
++          <div className="order-1 lg:order-2 relative aspect-[4/3] lg:aspect-auto lg:h-[560px]">
+             <Image
+-              src={fotos.halleUebersicht.src}
+-              alt={fotos.halleUebersicht.alt}
++              src={fotos.fahrzeugAufMessanlage.src}
++              alt={fotos.fahrzeugAufMessanlage.alt}
+               fill
+               sizes="(min-width: 1024px) 45vw, 100vw"
+               className="object-cover"
+@@ -189,41 +171,65 @@ export default function Home() {
+         </div>
+       </section>
+ 
+-      {/* Leistungen */}
++      {/* Region */}
+       <section className="max-w-content mx-auto px-6 py-16 md:py-24">
+-        <p className="eyebrow mb-3">Leistungen</p>
++        <p className="eyebrow mb-3">Standort</p>
+         <h2 className="text-3xl font-semibold max-w-xl">
+-          Gutachten und technische Untersuchungen für jeden Anlass
++          Für Sie in der Region.
+         </h2>
+-        <p className="mt-4 text-graphit/70 max-w-2xl leading-relaxed">
+-          Vom klassischen Unfallgutachten bis zur präzisen 3D-Vermessung —
+-          hier finden Sie unser vollständiges Leistungsspektrum.
+-        </p>
+-        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-messing/30">
+-          {leistungen.map((l) => (
+-            <ServiceCard key={l.href} href={l.href} titel={l.titel} text={l.text} tag={l.tag} />
+-          ))}
+-        </div>
+-        <div className="mt-8">
+-          <Link href="/leistungen" className="btn-secondary">
+-            Alle Leistungen ansehen
+-          </Link>
++        <div className="mt-12">
++          <RegionSection />
+         </div>
+       </section>
+ 
+-      {/* Ablauf */}
++      {/* Bewertungen */}
+       <section className="max-w-content mx-auto px-6 py-16 md:py-24">
+-        <p className="eyebrow mb-3">Ablauf</p>
+-        <h2 className="text-3xl font-semibold max-w-xl">
+-          Vom Kontakt zum fertigen Gutachten
++        <p className="eyebrow mb-3">Bewertungen</p>
++        <h2 className="text-3xl font-semibold max-w-xl mb-12">
++          Das sagen unsere Kunden.
+         </h2>
+-        <ProcessSteps variant="light" />
++        <ReviewsSection />
+       </section>
+ 
+-      <CTASection
+-        title="Schildern Sie uns Ihren Fall."
+-        text="Wir untersuchen Ihr Fahrzeug, dokumentieren den Zustand oder Schaden und erstellen ein nachvollziehbares Gutachten."
+-      />
++      {/* Über uns Teaser */}
++      <section className="max-w-content mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
++        <div className="relative aspect-[4/3] order-2 md:order-1">
++          <Image
++            src={fotos.technischeUntersuchung.src}
++            alt={fotos.technischeUntersuchung.alt}
++            fill
++            sizes="(min-width: 768px) 45vw, 100vw"
++            className="object-cover object-[center_20%]"
++          />
++        </div>
++        <div className="order-1 md:order-2">
++          <p className="eyebrow mb-3">Über uns</p>
++          <h2 className="text-2xl md:text-3xl font-semibold font-display">
++            Sachverstand trifft technische Ausstattung.
++          </h2>
++          <p className="mt-4 text-graphit/70 leading-relaxed">
++            Wir verbinden sachverständige Fahrzeugbewertung mit den
++            technischen Untersuchungsmöglichkeiten eines modern
++            ausgestatteten Prüfzentrums. Unser Anspruch: eine
++            nachvollziehbare, unabhängige und technisch fundierte
++            Schadenfeststellung.
++          </p>
++          <div className="mt-8">
++            <Link href="/ueber-uns" className="btn-secondary">
++              Mehr über uns
++            </Link>
++          </div>
++        </div>
++      </section>
++
++      {/* Großer Kontakt-CTA */}
++      <BigContactCTA image={fotos.gebaeude.src} imageAlt={fotos.gebaeude.alt} />
++
++      {/* Qualifikationen */}
++      <section className="max-w-content mx-auto px-6 py-16 md:py-20">
++        <p className="eyebrow mb-6">Qualifikationen &amp; Partnerschaften</p>
++        <QualificationsBar />
++      </section>
+     </>
+   );
+ }
+diff --git a/kfz-sachverstaendige/app/technische-ausstattung/page.tsx b/kfz-sachverstaendige/app/pruefzentrum/page.tsx
+similarity index 59%
+rename from kfz-sachverstaendige/app/technische-ausstattung/page.tsx
+rename to kfz-sachverstaendige/app/pruefzentrum/page.tsx
+index 815aab0..9c4b55d 100644
+--- a/kfz-sachverstaendige/app/technische-ausstattung/page.tsx
++++ b/kfz-sachverstaendige/app/pruefzentrum/page.tsx
+@@ -6,10 +6,10 @@ import EquipmentCard from "@/components/EquipmentCard";
+ import { fotos } from "@/lib/images";
+ 
+ export const metadata: Metadata = {
+-  title: "Unsere technische Ausstattung",
++  title: "Prüfzentrum",
+   description:
+-    "Spanesi Touch für 3D-Karosserievermessung, Beissbarth Q.Lign für Achsvermessung, Lackschichtdickenmessung, Fahrzeugdiagnose und professionelle Fotodokumentation — die technische Ausstattung des KFZ-Sachverständigenbüros Württemberg.",
+-  alternates: { canonical: "/technische-ausstattung" },
++    "Unser Prüfzentrum in Villingen-Schwenningen: Achsvermessung, 3D-Karosserievermessung mit Spanesi Touch, Lackschichtdickenmessung, Fahrzeugdiagnose und Hebebühnen unter einem Dach.",
++  alternates: { canonical: "/pruefzentrum" },
+ };
+ 
+ const ausstattung = [
+@@ -22,7 +22,7 @@ const ausstattung = [
+   },
+   {
+     geraet: "Beissbarth Q.Lign",
+-    titel: "Professionelle Achsvermessung",
++    titel: "Achsvermessung",
+     text: "Technische Prüfung der Fahrwerksgeometrie — insbesondere nach Radanstoß oder Bordsteinkontakt.",
+     einsatz: ["Radanstoß und Fahrwerksschäden", "Verdacht auf veränderte Spur- oder Sturzwerte", "Beweissicherung"],
+     href: "/leistungen/achsvermessung",
+@@ -40,41 +40,46 @@ const ausstattung = [
+     href: "/leistungen/fahrzeugdiagnose",
+   },
+   {
+-    titel: "Spaltmaßprüfung",
+-    text: "Feststellung sichtbarer Abweichungen an Karosserieanschlüssen als Hinweis auf frühere Reparaturen oder Vorschäden.",
+-    einsatz: ["Vorschadenprüfung", "Kaufbegleitung", "Unfallanalyse"],
++    titel: "Hebebühnenuntersuchung",
++    text: "Prüfung von Unterboden, Fahrwerk und Anbauteilen, die im Stand nicht einsehbar sind.",
++    einsatz: ["Fahrwerks- und Unterbodenprüfung", "Vorschadenprüfung", "Kaufbegleitung"],
+   },
+   {
+-    titel: "Technische Beweissicherung & Fotodokumentation",
+-    text: "Umfangreiche und nachvollziehbare Dokumentation aller relevanten Befunde am Fahrzeug.",
+-    einsatz: ["Beweissicherung für die Schadenabwicklung", "Dokumentation technischer Auffälligkeiten"],
++    titel: "Freilegungs- und Demontagearbeiten",
++    text: "Gezielte Demontage beschädigter Bereiche zur Feststellung verdeckter Schäden.",
++    einsatz: ["Schadenfeststellung an verdeckten Bauteilen", "Beweissicherung", "Ergänzung der Sichtprüfung"],
+     href: "/leistungen/technische-beweissicherung",
+   },
+ ];
+ 
+-export default function AusstattungPage() {
++export default function PruefzentrumPage() {
+   return (
+     <>
+       <PageHero
+-        eyebrow="Unsere Ausstattung"
+-        title="Unsere technische Ausstattung"
+-        lead="Ein Schaden lässt sich nicht immer allein durch Betrachtung vollständig einordnen. Mit professioneller Mess- und Diagnosetechnik können wir Fahrzeuge untersuchen, vermessen, diagnostizieren und die Ergebnisse nachvollziehbar dokumentieren."
+-        breadcrumbs={[{ name: "Technische Ausstattung", path: "/technische-ausstattung" }]}
++        eyebrow="Unser Prüfzentrum"
++        title="Technische Untersuchungen direkt an unserem Standort"
++        lead="Eine Sichtprüfung stößt bei komplexeren Schäden an ihre Grenzen. In unserem Prüfzentrum stehen Achsvermessung, 3D-Karosserievermessung, Fahrzeugdiagnose und Hebebühnen zur Verfügung — für eine technisch fundierte, nachvollziehbare Feststellung."
++        breadcrumbs={[{ name: "Prüfzentrum", path: "/pruefzentrum" }]}
+       />
+ 
+-      <section className="relative h-[42vh] min-h-[280px] md:h-[52vh] md:min-h-[380px]">
++      <section className="relative h-[42vh] min-h-[280px] md:h-[56vh] md:min-h-[420px]">
+         <Image
+-          src={fotos.pruefstand.src}
+-          alt={fotos.pruefstand.alt}
++          src={fotos.fahrzeugAufMessanlage.src}
++          alt={fotos.fahrzeugAufMessanlage.alt}
+           fill
++          priority
+           sizes="100vw"
+           className="object-cover"
+         />
+       </section>
+ 
+       <section className="bg-graphit text-nebel">
+-        <div className="max-w-content mx-auto px-6 py-16">
+-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
++        <div className="max-w-content mx-auto px-6 py-16 md:py-24">
++          <p className="eyebrow eyebrow-light mb-3">Ausstattung</p>
++          <h2 className="text-2xl md:text-3xl font-semibold font-display max-w-xl">
++            Was wir vor Ort untersuchen können
++          </h2>
++          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+             {ausstattung.map((a) => (
+               <EquipmentCard key={a.titel} {...a} />
+             ))}
+@@ -89,11 +94,10 @@ export default function AusstattungPage() {
+             Eigenes Prüf- und Sachverständigenzentrum
+           </h2>
+           <p className="mt-4 text-graphit/70 leading-relaxed">
+-            Die Begutachtung erfolgt mit geeigneter technischer Ausstattung
+-            für Karosserie-, Achs- und Lackprüfung sowie elektronische
+-            Fahrzeugdiagnose. So lassen sich Befunde nicht nur beschreiben,
+-            sondern messtechnisch belegen — direkt an unserem Standort in
+-            Villingen-Schwenningen.
++            Karosserie-, Achs- und Lackprüfung sowie elektronische
++            Fahrzeugdiagnose finden bei uns unter einem Dach statt. So lassen
++            sich Befunde nicht nur beschreiben, sondern messtechnisch
++            belegen — direkt an unserem Standort in Villingen-Schwenningen.
+           </p>
+         </div>
+         <div className="relative aspect-[4/3]">
+diff --git a/kfz-sachverstaendige/app/sitemap.ts b/kfz-sachverstaendige/app/sitemap.ts
+index 4524d01..b455a6a 100644
+--- a/kfz-sachverstaendige/app/sitemap.ts
++++ b/kfz-sachverstaendige/app/sitemap.ts
+@@ -13,7 +13,7 @@ const routes = [
+   "/leistungen/fahrzeugbewertung",
+   "/leistungen/oldtimer-youngtimer",
+   "/leistungen/kaufbegleitung",
+-  "/technische-ausstattung",
++  "/pruefzentrum",
+   "/ueber-uns",
+   "/faq",
+   "/kontakt",
+diff --git a/kfz-sachverstaendige/app/ueber-uns/page.tsx b/kfz-sachverstaendige/app/ueber-uns/page.tsx
+index 240ac6d..82cc2b8 100644
+--- a/kfz-sachverstaendige/app/ueber-uns/page.tsx
++++ b/kfz-sachverstaendige/app/ueber-uns/page.tsx
+@@ -18,23 +18,21 @@ export default function UeberUnsPage() {
+     <>
+       <PageHero
+         eyebrow="Über uns"
+-        title={`${siteConfig.adacStatus} in ${siteConfig.address.city}`}
++        title="Sachverstand trifft technische Ausstattung."
+         breadcrumbs={[{ name: "Über uns", path: "/ueber-uns" }]}
+       >
+         <div className="mt-8 space-y-5 max-w-2xl text-graphit/70 leading-relaxed">
+           <p>
+-            Das {siteConfig.companyName} unterstützt Fahrzeughalter,
+-            Unfallgeschädigte, Werkstätten, Autohäuser und Rechtsanwälte in{" "}
+-            {siteConfig.address.city} und der Region mit unabhängiger
+-            Sachverständigenarbeit — losgelöst von den Interessen einer
+-            Werkstatt oder Versicherung.
++            Wir unterstützen Fahrzeughalter, Unfallgeschädigte, Werkstätten,
++            Autohäuser und Rechtsanwälte in {siteConfig.address.city} und der
++            Region mit unabhängiger Sachverständigenarbeit — losgelöst von
++            den Interessen einer Werkstatt oder Versicherung.
+           </p>
+           <p>
+-            Ansprechpartner ist {siteConfig.contactPerson}, Kfz-Technikermeister
+-            und {siteConfig.adacStatus}. Die Begutachtung verbindet
+-            persönliche Sachverständigenarbeit mit dem eigenen Prüfzentrum:
+-            Schäden werden nicht nur betrachtet, sondern bei Bedarf vermessen,
+-            diagnostiziert und nachvollziehbar dokumentiert.
++            Wir verbinden sachverständige Fahrzeugbewertung mit dem eigenen
++            Prüfzentrum: Schäden werden nicht nur betrachtet, sondern bei
++            Bedarf vermessen, diagnostiziert und nachvollziehbar
++            dokumentiert.
+           </p>
+         </div>
+       </PageHero>
+@@ -83,13 +81,12 @@ export default function UeberUnsPage() {
+         <div className="max-w-2xl">
+           <h2 className="text-2xl font-semibold font-display">Arbeitsweise</h2>
+           <p className="mt-4 text-graphit/70 leading-relaxed">
+-            Jede Begutachtung wird individuell auf Fahrzeug und Anlass
+-            abgestimmt. Wo eine reine Sichtprüfung nicht ausreicht, kommen
+-            die Mess- und Prüfmöglichkeiten des eigenen Prüfzentrums zum
+-            Einsatz — von der 3D-Karosserie- und Achsvermessung bis zur
+-            Freilegung beschädigter Bereiche und elektronischen
+-            Fahrzeugdiagnose. Ziel ist eine nachvollziehbare, unabhängige
+-            Dokumentation, auf die sich Kundinnen und Kunden verlassen können.
++            Wir stimmen jede Begutachtung individuell auf Fahrzeug und
++            Anlass ab. Reicht eine reine Sichtprüfung nicht aus, setzen wir
++            die Mess- und Prüfmöglichkeiten unseres Prüfzentrums ein — von
++            der 3D-Karosserie- und Achsvermessung bis zur Freilegung
++            beschädigter Bereiche und elektronischen Fahrzeugdiagnose. So
++            entsteht eine nachvollziehbare, unabhängige Dokumentation.
+           </p>
+         </div>
+ 
+diff --git a/kfz-sachverstaendige/components/BigContactCTA.tsx b/kfz-sachverstaendige/components/BigContactCTA.tsx
+new file mode 100644
+index 0000000..670ff49
+--- /dev/null
++++ b/kfz-sachverstaendige/components/BigContactCTA.tsx
+@@ -0,0 +1,53 @@
++import Image from "next/image";
++import Link from "next/link";
++import type { StaticImageData } from "next/image";
++import { siteConfig } from "@/lib/site-config";
++
++type BigContactCTAProps = {
++  image: StaticImageData;
++  imageAlt: string;
++};
++
++export default function BigContactCTA({ image, imageAlt }: BigContactCTAProps) {
++  const whatsappNumber = siteConfig.phone.href.replace("tel:", "").replace("+", "");
++
++  return (
++    <section className="relative">
++      <div className="relative min-h-[420px] md:min-h-[520px] flex items-center">
++        <Image
++          src={image}
++          alt={imageAlt}
++          fill
++          sizes="100vw"
++          className="object-cover"
++        />
++        <div className="absolute inset-0 bg-graphit/80" />
++        <div className="relative max-w-content mx-auto px-6 py-20 text-nebel w-full">
++          <h2 className="text-3xl md:text-5xl font-semibold max-w-2xl leading-[1.15]">
++            Sie benötigen ein Gutachten oder eine technische
++            Fahrzeuguntersuchung?
++          </h2>
++          <p className="mt-4 text-xl md:text-2xl font-display text-safran">
++            Sprechen Sie mit uns.
++          </p>
++          <div className="mt-10 flex flex-wrap gap-4">
++            <a href={siteConfig.phone.href} className="btn-primary">
++              {siteConfig.phone.display}
++            </a>
++            <a
++              href={`https://wa.me/${whatsappNumber}`}
++              target="_blank"
++              rel="noopener noreferrer"
++              className="btn-secondary-inverse"
++            >
++              WhatsApp
++            </a>
++            <Link href="/kontakt" className="btn-secondary-inverse">
++              Termin vereinbaren
++            </Link>
++          </div>
++        </div>
++      </div>
++    </section>
++  );
++}
+diff --git a/kfz-sachverstaendige/components/Footer.tsx b/kfz-sachverstaendige/components/Footer.tsx
+index d39c4e3..a283460 100644
+--- a/kfz-sachverstaendige/components/Footer.tsx
++++ b/kfz-sachverstaendige/components/Footer.tsx
+@@ -3,13 +3,11 @@ import Image from "next/image";
+ import { navItems, siteConfig } from "@/lib/site-config";
+ import { logos } from "@/lib/images";
+ 
+-const leistungenLinks = navItems.find((item) => item.href === "/leistungen");
+-
+ export default function Footer() {
+   return (
+     <footer className="bg-graphit text-nebel mt-24 md:mt-32 pb-20 md:pb-0">
+-      <div className="max-w-content mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
+-        <div className="md:col-span-1">
++      <div className="max-w-content mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
++        <div>
+           <Image
+             src={logos.markWeiss.src}
+             alt={logos.markWeiss.alt}
+@@ -45,38 +43,15 @@ export default function Footer() {
+         </div>
+ 
+         <div className="text-sm">
+-          <p className="eyebrow eyebrow-light mb-3">Leistungen</p>
+-          <ul className="space-y-2 text-nebel/80">
+-            {leistungenLinks && "children" in leistungenLinks && leistungenLinks.children
+-              ?.slice(0, 6)
+-              .map((child) => (
+-                <li key={child.href}>
+-                  <Link href={child.href} className="link-accent-inverse">
+-                    {child.label}
+-                  </Link>
+-                </li>
+-              ))}
+-          </ul>
+-        </div>
+-
+-        <div className="text-sm">
+-          <p className="eyebrow eyebrow-light mb-3">Unternehmen</p>
++          <p className="eyebrow eyebrow-light mb-3">Navigation</p>
+           <ul className="space-y-2 text-nebel/80">
+-            <li>
+-              <Link href="/ueber-uns" className="link-accent-inverse">
+-                Über uns
+-              </Link>
+-            </li>
+-            <li>
+-              <Link href="/technische-ausstattung" className="link-accent-inverse">
+-                Technische Ausstattung
+-              </Link>
+-            </li>
+-            <li>
+-              <Link href="/faq" className="link-accent-inverse">
+-                FAQ
+-              </Link>
+-            </li>
++            {navItems.map((item) => (
++              <li key={item.href}>
++                <Link href={item.href} className="link-accent-inverse">
++                  {item.label}
++                </Link>
++              </li>
++            ))}
+             <li>
+               <Link href="/impressum" className="link-accent-inverse">
+                 Impressum
+@@ -91,34 +66,6 @@ export default function Footer() {
+         </div>
+       </div>
+ 
+-      {/* Qualifikationen — bewusst kompakt, kein Logo-Wall */}
+-      <div className="border-t border-nebel/10">
+-        <div className="max-w-content mx-auto px-6 py-8 flex flex-wrap items-center gap-x-10 gap-y-4">
+-          <span className="text-xs font-mono uppercase tracking-wide text-nebel/40">
+-            Qualifikationen
+-          </span>
+-          <Image
+-            src={logos.adacBadge.src}
+-            alt={logos.adacBadge.alt}
+-            className="h-14 w-auto"
+-          />
+-          <div className="bg-nebel px-3 py-2">
+-            <Image
+-              src={logos.vks.src}
+-              alt={logos.vks.alt}
+-              className="h-9 w-auto"
+-            />
+-          </div>
+-          <div className="bg-nebel px-3 py-2">
+-            <Image
+-              src={logos.handwerkskammer.src}
+-              alt={logos.handwerkskammer.alt}
+-              className="h-6 w-auto"
+-            />
+-          </div>
+-        </div>
+-      </div>
+-
+       <div className="border-t border-nebel/10">
+         <div className="max-w-content mx-auto px-6 py-5 flex flex-col md:flex-row justify-between gap-2 text-xs text-nebel/50 font-mono">
+           <span>© {new Date().getFullYear()} {siteConfig.companyName}</span>
+diff --git a/kfz-sachverstaendige/components/Header.tsx b/kfz-sachverstaendige/components/Header.tsx
+index c69cc64..5143052 100644
+--- a/kfz-sachverstaendige/components/Header.tsx
++++ b/kfz-sachverstaendige/components/Header.tsx
+@@ -7,63 +7,29 @@ import { logos } from "@/lib/images";
+ export default function Header() {
+   return (
+     <header className="border-b border-messing/30 bg-nebel/95 backdrop-blur sticky top-0 z-50">
+-      <div className="max-w-content mx-auto px-6 h-20 flex items-center justify-between gap-4">
+-        <Link href="/" className="flex items-center gap-3 min-w-0 shrink-0">
++      <div className="max-w-content mx-auto px-6 h-24 flex items-center justify-between gap-6">
++        <Link href="/" className="shrink-0">
+           <Image
+             src={logos.schriftDunkel.src}
+             alt={logos.schriftDunkel.alt}
+-            className="h-9 md:h-10 w-auto"
++            className="h-11 md:h-12 w-auto"
+             priority
+           />
+-          <span className="hidden sm:block h-8 w-px bg-messing/40" aria-hidden="true" />
+-          <span className="hidden sm:block text-xs font-mono uppercase tracking-wide text-graphit/50 leading-tight">
+-            Prüfzentrum
+-            <br />
+-            {siteConfig.address.city}
+-          </span>
+         </Link>
+ 
+-        <nav className="hidden lg:flex items-center gap-7 font-body text-sm">
+-          {navItems.map((item) =>
+-            "children" in item && item.children ? (
+-              <div key={item.href} className="relative group">
+-                <Link
+-                  href={item.href}
+-                  className="flex items-center gap-1 hover:text-safran-dunkel transition-colors py-8"
+-                >
+-                  {item.label}
+-                  <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+-                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+-                  </svg>
+-                </Link>
+-                <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block group-focus-within:block pt-0">
+-                  <ul className="w-72 bg-nebel border border-messing/30 shadow-lg py-2">
+-                    {item.children.map((child) => (
+-                      <li key={child.href}>
+-                        <Link
+-                          href={child.href}
+-                          className="block px-5 py-2.5 text-sm hover:bg-graphit/5 hover:text-safran-dunkel"
+-                        >
+-                          {child.label}
+-                        </Link>
+-                      </li>
+-                    ))}
+-                  </ul>
+-                </div>
+-              </div>
+-            ) : (
+-              <Link
+-                key={item.href}
+-                href={item.href}
+-                className="hover:text-safran-dunkel transition-colors"
+-              >
+-                {item.label}
+-              </Link>
+-            )
+-          )}
++        <nav className="hidden lg:flex items-center gap-10 font-body text-[15px]">
++          {navItems.map((item) => (
++            <Link
++              key={item.href}
++              href={item.href}
++              className="hover:text-safran-dunkel transition-colors"
++            >
++              {item.label}
++            </Link>
++          ))}
+         </nav>
+ 
+-        <div className="hidden lg:flex items-center gap-4 shrink-0">
++        <div className="hidden lg:flex items-center gap-5 shrink-0">
+           <a href={siteConfig.phone.href} className="font-mono text-sm text-graphit hover:text-safran-dunkel">
+             {siteConfig.phone.display}
+           </a>
+diff --git a/kfz-sachverstaendige/components/ImagePlaceholder.tsx b/kfz-sachverstaendige/components/ImagePlaceholder.tsx
+index c22182b..c2ca205 100644
+--- a/kfz-sachverstaendige/components/ImagePlaceholder.tsx
++++ b/kfz-sachverstaendige/components/ImagePlaceholder.tsx
+@@ -3,31 +3,33 @@ type ImagePlaceholderProps = {
+   className?: string;
+ };
+ 
+-// Solange keine eigenen Fotos vorliegen, markiert dieser Platzhalter
+-// deutlich, welches reale Motiv später an dieser Stelle eingesetzt
+-// werden sollte. Bewusst kein fremdes Stock-Foto.
++// Hochwertiger Asset-Slot für Motive, zu denen aktuell kein passendes
++// Originalfoto vorliegt. Bewusst kein Stock- oder KI-Bild an dieser Stelle,
++// bis ein tatsächlich passendes Motiv ergänzt wird (siehe Kommentar am
++// jeweiligen Einsatzort im Code).
+ export default function ImagePlaceholder({ label, className = "" }: ImagePlaceholderProps) {
+   return (
+     <div
+-      className={`relative flex items-center justify-center border border-dashed border-messing/50 bg-graphit/[0.03] text-center p-6 ${className}`}
++      className={`relative flex items-end justify-start overflow-hidden bg-graphit text-nebel p-6 ${className}`}
+       role="img"
+-      aria-label={`Bildplatzhalter: ${label}`}
++      aria-label={`Bildmotiv folgt: ${label}`}
+     >
+-      <div>
+-        <svg
+-          viewBox="0 0 24 24"
+-          className="w-8 h-8 mx-auto text-graphit/30"
+-          fill="none"
+-          stroke="currentColor"
+-          strokeWidth="1.5"
+-          aria-hidden="true"
+-        >
++      <div
++        className="absolute inset-0 opacity-[0.06]"
++        style={{
++          backgroundImage:
++            "repeating-linear-gradient(135deg, currentColor 0, currentColor 1px, transparent 1px, transparent 14px)",
++        }}
++        aria-hidden="true"
++      />
++      <div className="relative">
++        <svg viewBox="0 0 24 24" className="w-6 h-6 text-safran" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+           <rect x="3" y="5" width="18" height="14" rx="1" />
+           <circle cx="9" cy="10" r="1.5" />
+           <path d="M21 16l-5.5-5.5L9 17" />
+         </svg>
+-        <p className="mt-3 text-xs font-mono uppercase tracking-wide text-graphit/40 max-w-[16rem]">
+-          Foto folgt: {label}
++        <p className="mt-2 text-xs font-mono uppercase tracking-wide text-nebel/60 max-w-[16rem]">
++          Bildmotiv folgt: {label}
+         </p>
+       </div>
+     </div>
+diff --git a/kfz-sachverstaendige/components/LeistungCard.tsx b/kfz-sachverstaendige/components/LeistungCard.tsx
+new file mode 100644
+index 0000000..377e985
+--- /dev/null
++++ b/kfz-sachverstaendige/components/LeistungCard.tsx
+@@ -0,0 +1,45 @@
++import Link from "next/link";
++import Image from "next/image";
++import type { StaticImageData } from "next/image";
++import ImagePlaceholder from "@/components/ImagePlaceholder";
++
++type LeistungCardProps = {
++  nummer: string;
++  titel: string;
++  text: string;
++  href: string;
++  image?: { src: StaticImageData; alt: string };
++};
++
++export default function LeistungCard({ nummer, titel, text, href, image }: LeistungCardProps) {
++  return (
++    <Link href={href} className="group flex flex-col">
++      <div className="relative aspect-[4/3] overflow-hidden bg-graphit">
++        {image ? (
++          <Image
++            src={image.src}
++            alt={image.alt}
++            fill
++            sizes="(min-width: 1024px) 32vw, (min-width: 640px) 48vw, 100vw"
++            className="object-cover transition-transform duration-500 group-hover:scale-105"
++          />
++        ) : (
++          <ImagePlaceholder label={titel} className="absolute inset-0" />
++        )}
++        <span className="absolute left-4 top-4 font-mono text-sm text-safran">
++          {nummer}
++        </span>
++      </div>
++      <h3 className="mt-5 text-lg font-semibold font-display group-hover:text-safran-dunkel transition-colors">
++        {titel}
++      </h3>
++      <p className="mt-2 text-sm text-graphit/70 leading-relaxed">{text}</p>
++      <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-safran-dunkel">
++        Mehr erfahren
++        <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
++          →
++        </span>
++      </span>
++    </Link>
++  );
++}
+diff --git a/kfz-sachverstaendige/components/MobileNav.tsx b/kfz-sachverstaendige/components/MobileNav.tsx
+index 87b331c..f83ace8 100644
+--- a/kfz-sachverstaendige/components/MobileNav.tsx
++++ b/kfz-sachverstaendige/components/MobileNav.tsx
+@@ -65,21 +65,6 @@ export default function MobileNav() {
+                   >
+                     {item.label}
+                   </Link>
+-                  {"children" in item && item.children && (
+-                    <ul className="pl-4 pb-3 space-y-1 font-body text-base text-nebel/70">
+-                      {item.children.map((child) => (
+-                        <li key={child.href}>
+-                          <Link
+-                            href={child.href}
+-                            onClick={() => setOpen(false)}
+-                            className="block py-2"
+-                          >
+-                            {child.label}
+-                          </Link>
+-                        </li>
+-                      ))}
+-                    </ul>
+-                  )}
+                 </li>
+               ))}
+             </ul>
+diff --git a/kfz-sachverstaendige/components/QualificationsBar.tsx b/kfz-sachverstaendige/components/QualificationsBar.tsx
+new file mode 100644
+index 0000000..b29f548
+--- /dev/null
++++ b/kfz-sachverstaendige/components/QualificationsBar.tsx
+@@ -0,0 +1,30 @@
++import Image from "next/image";
++import { logos } from "@/lib/images";
++
++// Kompakte, zurückhaltende Logo-Leiste — bewusst keine "Logo-Wand".
++// Nur tatsächlich vorhandene, dafür vorgesehene Nachweis-Dateien.
++export default function QualificationsBar() {
++  return (
++    <div className="flex flex-wrap items-center gap-x-12 gap-y-6">
++      <Image
++        src={logos.adacBadge.src}
++        alt={logos.adacBadge.alt}
++        className="h-14 w-auto"
++      />
++      <div className="bg-white px-3 py-2">
++        <Image
++          src={logos.vks.src}
++          alt={logos.vks.alt}
++          className="h-10 w-auto"
++        />
++      </div>
++      <div className="bg-white px-3 py-2">
++        <Image
++          src={logos.handwerkskammer.src}
++          alt={logos.handwerkskammer.alt}
++          className="h-6 w-auto"
++        />
++      </div>
++    </div>
++  );
++}
+diff --git a/kfz-sachverstaendige/components/RegionSection.tsx b/kfz-sachverstaendige/components/RegionSection.tsx
+new file mode 100644
+index 0000000..38d6381
+--- /dev/null
++++ b/kfz-sachverstaendige/components/RegionSection.tsx
+@@ -0,0 +1,38 @@
++import { siteConfig } from "@/lib/site-config";
++
++export default function RegionSection() {
++  const mapQuery = encodeURIComponent(
++    `${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`
++  );
++
++  return (
++    <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
++      <div>
++        <p className="mt-2 text-graphit/70 leading-relaxed max-w-md">
++          Unser Standort ist {siteConfig.address.city}. Vor Ort sind wir
++          außerdem erreichbar in:
++        </p>
++        <div className="mt-6 flex flex-wrap gap-2">
++          {siteConfig.region.areas.slice(1).map((area) => (
++            <span
++              key={area}
++              className="text-sm border border-messing/40 px-3.5 py-1.5"
++            >
++              {area}
++            </span>
++          ))}
++        </div>
++      </div>
++
++      <div className="relative aspect-[4/3] lg:aspect-[16/11] border border-messing/30">
++        <iframe
++          title={`Standort ${siteConfig.companyName}`}
++          src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
++          className="absolute inset-0 w-full h-full grayscale-[40%]"
++          loading="lazy"
++          referrerPolicy="no-referrer-when-downgrade"
++        />
++      </div>
++    </div>
++  );
++}
+diff --git a/kfz-sachverstaendige/components/ReviewsSection.tsx b/kfz-sachverstaendige/components/ReviewsSection.tsx
+new file mode 100644
+index 0000000..28e3719
+--- /dev/null
++++ b/kfz-sachverstaendige/components/ReviewsSection.tsx
+@@ -0,0 +1,55 @@
++export type GoogleReview = {
++  name: string;
++  rating: 1 | 2 | 3 | 4 | 5;
++  text: string;
++  // Datum wie von Google geliefert, z. B. "vor 2 Wochen".
++  relativeDate: string;
++};
++
++function Stars({ rating }: { rating: number }) {
++  return (
++    <div className="flex gap-0.5 text-safran" aria-hidden="true">
++      {Array.from({ length: 5 }).map((_, i) => (
++        <svg key={i} viewBox="0 0 20 20" className="w-4 h-4" fill={i < rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1">
++          <path d="M10 1.5l2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L1.4 7.8l6-.7L10 1.5z" strokeLinejoin="round" />
++        </svg>
++      ))}
++    </div>
++  );
++}
++
++// Fertige, einsatzbereite Komponente für echte Google-Bewertungen.
++// WICHTIG: `reviews` wird bewusst NICHT mit Beispieldaten befüllt — es
++// werden hier ausschließlich echte, über die Google-Anbindung abgerufene
++// Bewertungen angezeigt. Solange keine Anbindung besteht, zeigt die
++// Komponente einen ehrlichen Platzhalter-Zustand statt erfundener Texte.
++export default function ReviewsSection({ reviews = [] }: { reviews?: GoogleReview[] }) {
++  if (reviews.length === 0) {
++    return (
++      <div className="border border-messing/30 px-8 py-14 text-center max-w-xl mx-auto">
++        <Stars rating={0} />
++        <p className="mt-4 text-graphit/70 leading-relaxed">
++          Unsere Google-Bewertungen werden an dieser Stelle in Kürze
++          eingebunden.
++        </p>
++      </div>
++    );
++  }
++
++  return (
++    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
++      {reviews.map((r) => (
++        <div key={r.name + r.relativeDate} className="border border-messing/30 p-7 flex flex-col">
++          <Stars rating={r.rating} />
++          <p className="mt-4 text-sm text-graphit/80 leading-relaxed flex-1">
++            „{r.text}&rdquo;
++          </p>
++          <div className="mt-5 flex items-center justify-between text-xs text-graphit/50 font-mono">
++            <span>{r.name}</span>
++            <span>{r.relativeDate}</span>
++          </div>
++        </div>
++      ))}
++    </div>
++  );
++}
+diff --git a/kfz-sachverstaendige/components/TrustBadges.tsx b/kfz-sachverstaendige/components/TrustBadges.tsx
+index 6945b8c..d770b07 100644
+--- a/kfz-sachverstaendige/components/TrustBadges.tsx
++++ b/kfz-sachverstaendige/components/TrustBadges.tsx
+@@ -1,29 +1,19 @@
+ const punkte = [
+-  {
+-    titel: "Kfz-Technikermeister",
+-    text: "Meisterqualifikation im Kraftfahrzeugtechniker-Handwerk.",
+-  },
+-  {
+-    titel: "ADAC Vertrags-Sachverständiger",
+-    text: "Begutachtung im Rahmen einer Vertragsbindung mit dem ADAC.",
+-  },
+-  {
+-    titel: "VKS-Mitglied",
+-    text: "Mitglied im Verband der Kfz-Sachverständigen.",
+-  },
+-  {
+-    titel: "Eigenes Prüfzentrum",
+-    text: "Achs- und Rahmenvermessung, Hebebühnen, Diagnose vor Ort.",
+-  },
++  { titel: "Kfz-Technikermeister" },
++  { titel: "ADAC-\nVertragssachverständiger" },
++  { titel: "VKS-\nVerbandsmitglied" },
++  { titel: "Technisches\nPrüfzentrum" },
+ ];
+ 
+ export default function TrustBadges() {
+   return (
+-    <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-messing/30">
++    <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-messing/25 border border-messing/25">
+       {punkte.map((p) => (
+-        <div key={p.titel} className="bg-nebel p-6 md:p-7 border-t-2 border-safran">
+-          <p className="font-display font-semibold text-sm leading-snug">{p.titel}</p>
+-          <p className="mt-2 text-xs text-graphit/60 leading-relaxed">{p.text}</p>
++        <div key={p.titel} className="px-5 py-8 md:py-10 text-center">
++          <span className="block w-6 h-px bg-safran mx-auto mb-4" aria-hidden="true" />
++          <p className="font-display font-semibold text-[15px] md:text-base leading-snug whitespace-pre-line">
++            {p.titel}
++          </p>
+         </div>
+       ))}
+     </div>
+diff --git a/kfz-sachverstaendige/lib/site-config.ts b/kfz-sachverstaendige/lib/site-config.ts
+index 5634961..45dc5e3 100644
+--- a/kfz-sachverstaendige/lib/site-config.ts
++++ b/kfz-sachverstaendige/lib/site-config.ts
+@@ -54,37 +54,38 @@ export const siteConfig = {
+         : "http://localhost:3000"),
+ } as const;
+ 
++// Bewusst schlanke Hauptnavigation. Die einzelnen Leistungsseiten
++// (/leistungen/...) bestehen technisch weiterhin für SEO und Detailinfos,
++// tauchen aber nicht mehr als Dropdown in der Hauptnavigation auf.
+ export const navItems = [
+-  { href: "/", label: "Startseite" },
+-  {
+-    href: "/leistungen",
+-    label: "Leistungen",
+-    children: [
+-      { href: "/leistungen/unfallgutachten", label: "Unfallgutachten" },
+-      {
+-        href: "/leistungen/technische-beweissicherung",
+-        label: "Technische Beweissicherung",
+-      },
+-      {
+-        href: "/leistungen/karosserievermessung",
+-        label: "3D-Karosserievermessung",
+-      },
+-      { href: "/leistungen/achsvermessung", label: "Achsvermessung" },
+-      {
+-        href: "/leistungen/lackschichtdickenmessung",
+-        label: "Lackschichtdickenmessung",
+-      },
+-      { href: "/leistungen/fahrzeugdiagnose", label: "Fahrzeugdiagnose" },
+-      { href: "/leistungen/fahrzeugbewertung", label: "Fahrzeugbewertung" },
+-      {
+-        href: "/leistungen/oldtimer-youngtimer",
+-        label: "Oldtimer & Youngtimer",
+-      },
+-      { href: "/leistungen/kaufbegleitung", label: "Kaufbegleitung" },
+-    ],
+-  },
+-  { href: "/technische-ausstattung", label: "Ausstattung" },
++  { href: "/leistungen", label: "Leistungen" },
++  { href: "/pruefzentrum", label: "Prüfzentrum" },
+   { href: "/ueber-uns", label: "Über uns" },
+-  { href: "/faq", label: "FAQ" },
+   { href: "/kontakt", label: "Kontakt" },
+ ] as const;
++
++// Vollständige Leistungsliste für Footer, Sitemap-Verlinkung und die
++// Leistungsübersichtsseite.
++export const leistungenLinks = [
++  { href: "/leistungen/unfallgutachten", label: "Unfallgutachten" },
++  {
++    href: "/leistungen/technische-beweissicherung",
++    label: "Technische Beweissicherung",
++  },
++  {
++    href: "/leistungen/karosserievermessung",
++    label: "3D-Karosserievermessung",
++  },
++  { href: "/leistungen/achsvermessung", label: "Achsvermessung" },
++  {
++    href: "/leistungen/lackschichtdickenmessung",
++    label: "Lackschichtdickenmessung",
++  },
++  { href: "/leistungen/fahrzeugdiagnose", label: "Fahrzeugdiagnose" },
++  { href: "/leistungen/fahrzeugbewertung", label: "Fahrzeugbewertung" },
++  {
++    href: "/leistungen/oldtimer-youngtimer",
++    label: "Oldtimer & Youngtimer",
++  },
++  { href: "/leistungen/kaufbegleitung", label: "Kaufbegleitung" },
++] as const;
+diff --git a/kfz-sachverstaendige/next.config.mjs b/kfz-sachverstaendige/next.config.mjs
+index d5456a1..88131e5 100644
+--- a/kfz-sachverstaendige/next.config.mjs
++++ b/kfz-sachverstaendige/next.config.mjs
+@@ -1,6 +1,15 @@
+ /** @type {import('next').NextConfig} */
+ const nextConfig = {
+   reactStrictMode: true,
++  async redirects() {
++    return [
++      {
++        source: "/technische-ausstattung",
++        destination: "/pruefzentrum",
++        permanent: true,
++      },
++    ];
++  },
+ };
+ 
+ export default nextConfig;

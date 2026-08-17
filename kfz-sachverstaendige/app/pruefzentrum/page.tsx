@@ -6,10 +6,10 @@ import EquipmentCard from "@/components/EquipmentCard";
 import { fotos } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Unsere technische Ausstattung",
+  title: "Prüfzentrum",
   description:
-    "Spanesi Touch für 3D-Karosserievermessung, Beissbarth Q.Lign für Achsvermessung, Lackschichtdickenmessung, Fahrzeugdiagnose und professionelle Fotodokumentation — die technische Ausstattung des KFZ-Sachverständigenbüros Württemberg.",
-  alternates: { canonical: "/technische-ausstattung" },
+    "Unser Prüfzentrum in Villingen-Schwenningen: Achsvermessung, 3D-Karosserievermessung mit Spanesi Touch, Lackschichtdickenmessung, Fahrzeugdiagnose und Hebebühnen unter einem Dach.",
+  alternates: { canonical: "/pruefzentrum" },
 };
 
 const ausstattung = [
@@ -22,7 +22,7 @@ const ausstattung = [
   },
   {
     geraet: "Beissbarth Q.Lign",
-    titel: "Professionelle Achsvermessung",
+    titel: "Achsvermessung",
     text: "Technische Prüfung der Fahrwerksgeometrie — insbesondere nach Radanstoß oder Bordsteinkontakt.",
     einsatz: ["Radanstoß und Fahrwerksschäden", "Verdacht auf veränderte Spur- oder Sturzwerte", "Beweissicherung"],
     href: "/leistungen/achsvermessung",
@@ -40,41 +40,46 @@ const ausstattung = [
     href: "/leistungen/fahrzeugdiagnose",
   },
   {
-    titel: "Spaltmaßprüfung",
-    text: "Feststellung sichtbarer Abweichungen an Karosserieanschlüssen als Hinweis auf frühere Reparaturen oder Vorschäden.",
-    einsatz: ["Vorschadenprüfung", "Kaufbegleitung", "Unfallanalyse"],
+    titel: "Hebebühnenuntersuchung",
+    text: "Prüfung von Unterboden, Fahrwerk und Anbauteilen, die im Stand nicht einsehbar sind.",
+    einsatz: ["Fahrwerks- und Unterbodenprüfung", "Vorschadenprüfung", "Kaufbegleitung"],
   },
   {
-    titel: "Technische Beweissicherung & Fotodokumentation",
-    text: "Umfangreiche und nachvollziehbare Dokumentation aller relevanten Befunde am Fahrzeug.",
-    einsatz: ["Beweissicherung für die Schadenabwicklung", "Dokumentation technischer Auffälligkeiten"],
+    titel: "Freilegungs- und Demontagearbeiten",
+    text: "Gezielte Demontage beschädigter Bereiche zur Feststellung verdeckter Schäden.",
+    einsatz: ["Schadenfeststellung an verdeckten Bauteilen", "Beweissicherung", "Ergänzung der Sichtprüfung"],
     href: "/leistungen/technische-beweissicherung",
   },
 ];
 
-export default function AusstattungPage() {
+export default function PruefzentrumPage() {
   return (
     <>
       <PageHero
-        eyebrow="Unsere Ausstattung"
-        title="Unsere technische Ausstattung"
-        lead="Ein Schaden lässt sich nicht immer allein durch Betrachtung vollständig einordnen. Mit professioneller Mess- und Diagnosetechnik können wir Fahrzeuge untersuchen, vermessen, diagnostizieren und die Ergebnisse nachvollziehbar dokumentieren."
-        breadcrumbs={[{ name: "Technische Ausstattung", path: "/technische-ausstattung" }]}
+        eyebrow="Unser Prüfzentrum"
+        title="Technische Untersuchungen direkt an unserem Standort"
+        lead="Eine Sichtprüfung stößt bei komplexeren Schäden an ihre Grenzen. In unserem Prüfzentrum stehen Achsvermessung, 3D-Karosserievermessung, Fahrzeugdiagnose und Hebebühnen zur Verfügung — für eine technisch fundierte, nachvollziehbare Feststellung."
+        breadcrumbs={[{ name: "Prüfzentrum", path: "/pruefzentrum" }]}
       />
 
-      <section className="relative h-[42vh] min-h-[280px] md:h-[52vh] md:min-h-[380px]">
+      <section className="relative h-[42vh] min-h-[280px] md:h-[56vh] md:min-h-[420px]">
         <Image
-          src={fotos.pruefstand.src}
-          alt={fotos.pruefstand.alt}
+          src={fotos.fahrzeugAufMessanlage.src}
+          alt={fotos.fahrzeugAufMessanlage.alt}
           fill
+          priority
           sizes="100vw"
           className="object-cover"
         />
       </section>
 
       <section className="bg-graphit text-nebel">
-        <div className="max-w-content mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-content mx-auto px-6 py-16 md:py-24">
+          <p className="eyebrow eyebrow-light mb-3">Ausstattung</p>
+          <h2 className="text-2xl md:text-3xl font-semibold font-display max-w-xl">
+            Was wir vor Ort untersuchen können
+          </h2>
+          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ausstattung.map((a) => (
               <EquipmentCard key={a.titel} {...a} />
             ))}
@@ -89,11 +94,10 @@ export default function AusstattungPage() {
             Eigenes Prüf- und Sachverständigenzentrum
           </h2>
           <p className="mt-4 text-graphit/70 leading-relaxed">
-            Die Begutachtung erfolgt mit geeigneter technischer Ausstattung
-            für Karosserie-, Achs- und Lackprüfung sowie elektronische
-            Fahrzeugdiagnose. So lassen sich Befunde nicht nur beschreiben,
-            sondern messtechnisch belegen — direkt an unserem Standort in
-            Villingen-Schwenningen.
+            Karosserie-, Achs- und Lackprüfung sowie elektronische
+            Fahrzeugdiagnose finden bei uns unter einem Dach statt. So lassen
+            sich Befunde nicht nur beschreiben, sondern messtechnisch
+            belegen — direkt an unserem Standort in Villingen-Schwenningen.
           </p>
         </div>
         <div className="relative aspect-[4/3]">

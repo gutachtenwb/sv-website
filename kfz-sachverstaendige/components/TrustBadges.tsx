@@ -1,29 +1,19 @@
 const punkte = [
-  {
-    titel: "Kfz-Technikermeister",
-    text: "Meisterqualifikation im Kraftfahrzeugtechniker-Handwerk.",
-  },
-  {
-    titel: "ADAC Vertrags-Sachverständiger",
-    text: "Begutachtung im Rahmen einer Vertragsbindung mit dem ADAC.",
-  },
-  {
-    titel: "VKS-Mitglied",
-    text: "Mitglied im Verband der Kfz-Sachverständigen.",
-  },
-  {
-    titel: "Eigenes Prüfzentrum",
-    text: "Achs- und Rahmenvermessung, Hebebühnen, Diagnose vor Ort.",
-  },
+  { titel: "Kfz-Technikermeister" },
+  { titel: "ADAC-\nVertragssachverständiger" },
+  { titel: "VKS-\nVerbandsmitglied" },
+  { titel: "Technisches\nPrüfzentrum" },
 ];
 
 export default function TrustBadges() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-messing/30">
+    <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-messing/25 border border-messing/25">
       {punkte.map((p) => (
-        <div key={p.titel} className="bg-nebel p-6 md:p-7 border-t-2 border-safran">
-          <p className="font-display font-semibold text-sm leading-snug">{p.titel}</p>
-          <p className="mt-2 text-xs text-graphit/60 leading-relaxed">{p.text}</p>
+        <div key={p.titel} className="px-5 py-8 md:py-10 text-center">
+          <span className="block w-6 h-px bg-safran mx-auto mb-4" aria-hidden="true" />
+          <p className="font-display font-semibold text-[15px] md:text-base leading-snug whitespace-pre-line">
+            {p.titel}
+          </p>
         </div>
       ))}
     </div>

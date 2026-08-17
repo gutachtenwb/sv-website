@@ -65,21 +65,6 @@ export default function MobileNav() {
                   >
                     {item.label}
                   </Link>
-                  {"children" in item && item.children && (
-                    <ul className="pl-4 pb-3 space-y-1 font-body text-base text-nebel/70">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            onClick={() => setOpen(false)}
-                            className="block py-2"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </li>
               ))}
             </ul>

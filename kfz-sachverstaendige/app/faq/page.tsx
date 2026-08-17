@@ -140,7 +140,7 @@ export default function FAQPage() {
         breadcrumbs={[{ name: "FAQ", path: "/faq" }]}
       />
 
-      <section className="max-w-content mx-auto px-6 pb-16 max-w-3xl">
+      <section className="max-w-3xl mx-auto px-6 pb-16">
         <FAQAccordion items={faqItems} />
       </section>
 

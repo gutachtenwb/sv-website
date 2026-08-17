@@ -1,7 +1,32 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ServiceCard from "@/components/ServiceCard";
 import CTASection from "@/components/CTASection";
+import FAQAccordion from "@/components/FAQAccordion";
+
+const faqAuswahl = [
+  {
+    question: "Wann benötige ich ein Unfallgutachten?",
+    answer:
+      "Ein Unfallgutachten ist grundsätzlich sinnvoll, wenn ein Fahrzeug bei einem Verkehrsunfall beschädigt wurde und der Schadenumfang, die Reparaturkosten oder eine mögliche Wertminderung nachvollziehbar dokumentiert werden sollen. Bei sehr geringen Schäden kann unter Umständen bereits ein Kostenvoranschlag ausreichen.",
+  },
+  {
+    question: "Wer bezahlt das Gutachten bei einem unverschuldeten Unfall?",
+    answer:
+      "Bei einem unverschuldeten Haftpflichtschaden werden die Kosten des Gutachtens in der Regel im Rahmen der Schadenregulierung von der gegnerischen Versicherung übernommen, sofern die Voraussetzungen dafür vorliegen. Eine allgemeingültige Zusage können wir dazu nicht treffen, da dies vom Einzelfall abhängt.",
+  },
+  {
+    question: "Wann ist eine Achsvermessung sinnvoll?",
+    answer:
+      "Insbesondere nach einem Radanstoß, Bordsteinkontakt oder einem Unfall im Radbereich kann eine Achsvermessung mit Beissbarth Q.Lign sinnvoll sein, da eine rein optische Prüfung veränderte Spur- oder Sturzwerte nicht immer zuverlässig erkennen lässt.",
+  },
+  {
+    question: "Wie läuft eine Fahrzeugbegutachtung ab?",
+    answer:
+      "Nach der Kontaktaufnahme vereinbaren wir einen Besichtigungstermin. Das Fahrzeug wird untersucht und der Schaden bzw. Zustand dokumentiert. Bei Bedarf erfolgen ergänzende technische Messungen im Prüfzentrum. Anschließend erstellen wir das Gutachten.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Leistungen",
@@ -112,6 +137,21 @@ export default function LeistungenPage() {
             Ihrem konkreten Fahrzeug gerne an.
           </p>
         </section>
+      </div>
+
+      <div className="max-w-content mx-auto px-6 pb-20">
+        <div className="max-w-3xl">
+          <p className="eyebrow mb-2">Häufige Fragen</p>
+          <h2 className="text-2xl font-semibold font-display mb-8">
+            Kurz beantwortet
+          </h2>
+          <FAQAccordion items={faqAuswahl} />
+          <div className="mt-8">
+            <Link href="/faq" className="btn-secondary">
+              Alle Fragen ansehen
+            </Link>
+          </div>
+        </div>
       </div>
 
       <CTASection

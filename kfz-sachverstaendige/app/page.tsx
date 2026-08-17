@@ -1,74 +1,69 @@
 import Link from "next/link";
 import Image from "next/image";
 import TrustBadges from "@/components/TrustBadges";
-import ServiceCard from "@/components/ServiceCard";
-import UspCard from "@/components/UspCard";
-import ProcessSteps from "@/components/ProcessSteps";
-import CTASection from "@/components/CTASection";
+import LeistungCard from "@/components/LeistungCard";
+import QualificationsBar from "@/components/QualificationsBar";
+import RegionSection from "@/components/RegionSection";
+import ReviewsSection from "@/components/ReviewsSection";
+import BigContactCTA from "@/components/BigContactCTA";
 import { siteConfig } from "@/lib/site-config";
 import { fotos } from "@/lib/images";
 
-const usp = [
+const leistungen = [
   {
-    tag: "Beissbarth Q.Lign",
-    titel: "Achsvermessung",
-    text: "Technische Prüfung der Fahrwerksgeometrie — insbesondere nach Radanstoß oder Bordsteinkontakt.",
-    image: fotos.pruefstand,
-  },
-  {
-    tag: "Spanesi Touch",
-    titel: "3D-Rahmenvermessung",
-    text: "Vergleich von Soll- und Ist-Maßen zur Prüfung der Karosserie- und Fahrzeugstruktur.",
-    image: fotos.fahrzeugAufMessanlageWeit,
-  },
-  {
-    tag: "Schadenfeststellung",
-    titel: "Zerlegungsarbeiten",
-    text: "Freilegung beschädigter Bereiche zur technischen Beurteilung verdeckter Schäden.",
+    nummer: "01",
+    titel: "Schadengutachten",
+    text: "Schadenaufnahme, Reparaturkosten und Wertminderung nach einem Unfall — nachvollziehbar dokumentiert.",
+    href: "/leistungen/unfallgutachten",
     image: fotos.technischeUntersuchung,
   },
   {
-    tag: "Dokumentation",
+    nummer: "02",
+    titel: "Fahrzeugbewertung",
+    text: "Marktwertermittlung für Kauf, Verkauf, Leasing und Versicherungsfälle.",
+    href: "/leistungen/fahrzeugbewertung",
+    // Kein passendes Originalfoto vorhanden — bewusst Platzhalter statt
+    // eines nicht zutreffenden Bildes. Motiv ergänzen, sobald verfügbar.
+    image: undefined,
+  },
+  {
+    nummer: "03",
+    titel: "Zustandsbewertung",
+    text: "Technischer Check von Karosserie, Lack und Fahrwerk vor dem Fahrzeugkauf.",
+    href: "/leistungen/kaufbegleitung",
+    image: undefined,
+  },
+  {
+    nummer: "04",
+    titel: "Achsvermessung",
+    text: "Prüfung der Fahrwerksgeometrie mit Beissbarth Q.Lign, insbesondere nach Radanstoß.",
+    href: "/leistungen/achsvermessung",
+    image: fotos.pruefstand,
+  },
+  {
+    nummer: "05",
+    titel: "3D-Karosserie- / Rahmenvermessung",
+    text: "Vergleich von Soll- und Ist-Maßen mit Spanesi Touch bei Verdacht auf Strukturschäden.",
+    href: "/leistungen/karosserievermessung",
+    image: fotos.fahrzeugAufMessanlageWeit,
+  },
+  {
+    nummer: "06",
     titel: "Technische Beweissicherung",
-    text: "Nachvollziehbare Messung, Diagnose und Fotodokumentation über die Sichtprüfung hinaus.",
+    text: "Messung, Diagnose und Fotodokumentation über die Sichtprüfung hinaus.",
+    href: "/leistungen/technische-beweissicherung",
     image: fotos.halleUebersicht,
   },
 ];
 
-const leistungen = [
-  {
-    href: "/leistungen/karosserievermessung",
-    titel: "3D-Karosserievermessung",
-    text: "Rahmen- und Strukturvermessung mit Spanesi Touch bei Verdacht auf Strukturschäden.",
-    tag: "Prüfzentrum",
-  },
-  {
-    href: "/leistungen/achsvermessung",
-    titel: "Achsvermessung",
-    text: "Prüfung der Fahrwerksgeometrie mit Beissbarth Q.Lign, insbesondere nach Radanstoß.",
-    tag: "Prüfzentrum",
-  },
-  {
-    href: "/leistungen/technische-beweissicherung",
-    titel: "Technische Beweissicherung",
-    text: "Über die reine Sichtprüfung hinaus: Messung, Diagnose und nachvollziehbare Dokumentation von Schäden.",
-    tag: "Prüfzentrum",
-  },
-  {
-    href: "/leistungen/unfallgutachten",
-    titel: "Unfallgutachten",
-    text: "Vollständige Schadenaufnahme, Reparaturkosten, Wiederbeschaffungswert und Wertminderung nach einem Verkehrsunfall.",
-  },
-  {
-    href: "/leistungen/fahrzeugbewertung",
-    titel: "Fahrzeugbewertung",
-    text: "Marktwertermittlung für Kauf, Verkauf, Leasing oder Versicherungsfälle — nachvollziehbar dokumentiert.",
-  },
-  {
-    href: "/leistungen/oldtimer-youngtimer",
-    titel: "Oldtimer & Youngtimer",
-    text: "Zustands- und Wertermittlung für historische Fahrzeuge und Youngtimer.",
-  },
+const pruefzentrumPunkte = [
+  "Achsvermessung",
+  "3D-Karosserie- und Strukturvermessung (Spanesi Touch)",
+  "Fahrzeugdiagnose / Fehlerspeicherauslese",
+  "Untersuchung auf der Hebebühne",
+  "Freilegungs- und Demontagearbeiten",
+  "Lackschichtdickenmessung",
+  "Spaltmaß- und Karosserieprüfung",
 ];
 
 export default function Home() {
@@ -78,31 +73,34 @@ export default function Home() {
       <section className="relative bg-graphit text-nebel overflow-hidden">
         <div className="flex flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-stretch">
           <div className="order-2 lg:order-1 px-6 py-14 md:py-20 lg:py-0 lg:pl-[max(1.5rem,calc((100vw-1180px)/2))] lg:pr-14 flex flex-col justify-center">
-            <p className="eyebrow eyebrow-light">
-              {siteConfig.adacStatus} · {siteConfig.address.city}
-            </p>
-            <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.08] max-w-xl break-words">
-              Kfz-Sachverständige mit eigenem Prüfzentrum.
+            <h1 className="text-4xl sm:text-5xl font-semibold leading-[1.15] max-w-xl [overflow-wrap:normal]">
+              Kfz-Sachverständigen&shy;büro
+              <br className="hidden sm:block" /> &amp; Prüfzentrum in
+              Villingen-Schwenningen.
             </h1>
             <p className="mt-6 text-lg text-nebel/75 max-w-lg leading-relaxed">
-              Unabhängige Kfz-Gutachten und technische Fahrzeuguntersuchungen
-              in {siteConfig.address.city} — mit Achsvermessung, 3D-Rahmenvermessung
-              und Hebebühnen im eigenen Haus.
+              Unabhängige Schaden- und Fahrzeugbewertungen — ergänzt durch
+              technische Untersuchungsmöglichkeiten direkt an unserem
+              Standort.
+            </p>
+            <p className="mt-5 font-mono text-xs uppercase tracking-[0.15em] text-safran">
+              Achsvermessung · 3D-Karosserievermessung · Fahrzeugdiagnose ·
+              technische Demontage
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link href="/kontakt" className="btn-primary">
                 Termin vereinbaren
               </Link>
               <a href={siteConfig.phone.href} className="btn-secondary-inverse">
-                Jetzt anrufen: {siteConfig.phone.display}
+                Kontakt aufnehmen
               </a>
             </div>
           </div>
 
           <div className="order-1 lg:order-2 relative h-[52vh] min-h-[360px] lg:h-auto lg:min-h-[640px]">
             <Image
-              src={fotos.fahrzeugAufMessanlage.src}
-              alt={fotos.fahrzeugAufMessanlage.alt}
+              src={fotos.gebaeude.src}
+              alt={fotos.gebaeude.alt}
               fill
               priority
               sizes="(min-width: 1024px) 55vw, 100vw"
@@ -114,31 +112,19 @@ export default function Home() {
       </section>
 
       {/* Trust */}
-      <section className="max-w-content mx-auto px-6 py-10 md:py-12">
+      <section className="max-w-content mx-auto px-6 py-14 md:py-16">
         <TrustBadges />
       </section>
 
-      {/* USP */}
+      {/* Leistungen */}
       <section className="max-w-content mx-auto px-6 py-16 md:py-24">
-        <p className="eyebrow mb-3">Mehr als ein Gutachten</p>
+        <p className="eyebrow mb-3">Leistungen</p>
         <h2 className="text-3xl md:text-4xl font-semibold max-w-xl">
-          Wenn Sichtprüfung allein nicht ausreicht
+          Wie können wir Sie unterstützen?
         </h2>
-        <p className="mt-4 text-graphit/70 max-w-2xl leading-relaxed">
-          Bei komplexen Fahrzeugschäden reicht eine reine Sichtprüfung nicht
-          immer aus. In unserem eigenen Prüfzentrum stehen professionelle
-          Mess- und Prüfmöglichkeiten zur Verfügung.
-        </p>
-        <div className="mt-12 grid sm:grid-cols-2 gap-x-8 gap-y-12">
-          {usp.map((u) => (
-            <UspCard
-              key={u.titel}
-              image={u.image.src}
-              imageAlt={u.image.alt}
-              tag={u.tag}
-              titel={u.titel}
-              text={u.text}
-            />
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+          {leistungen.map((l) => (
+            <LeistungCard key={l.href} {...l} />
           ))}
         </div>
       </section>
@@ -149,38 +135,34 @@ export default function Home() {
           <div className="order-2 lg:order-1">
             <p className="eyebrow eyebrow-light mb-3">Unser Prüfzentrum</p>
             <h2 className="text-3xl md:text-4xl font-semibold max-w-lg">
-              Technik, die Schäden sichtbar macht
+              Technische Untersuchungen direkt an unserem Standort
             </h2>
             <p className="mt-4 text-nebel/70 max-w-lg leading-relaxed">
-              Reicht eine äußere Besichtigung nicht aus, untersuchen wir Ihr
-              Fahrzeug im eigenen Prüfzentrum weiter — mit Messtechnik, die
-              über den bloßen Blick hinausgeht.
+              Unser Prüfzentrum ermöglicht weiterführende technische
+              Untersuchungen, die über eine rein visuelle Fahrzeugbesichtigung
+              hinausgehen.
             </p>
-            <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3">
-              {[
-                "Achsgeometrie",
-                "Karosserie- / Rahmenvermessung",
-                "Freilegung beschädigter Bereiche",
-                "Hebebühnenprüfung",
-                "Diagnose & technische Dokumentation",
-              ].map((punkt) => (
-                <li key={punkt} className="flex items-start gap-2 text-sm text-nebel/80">
-                  <span className="text-safran mt-1">—</span>
-                  <span>{punkt}</span>
-                </li>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {pruefzentrumPunkte.map((punkt) => (
+                <span
+                  key={punkt}
+                  className="text-sm border border-nebel/25 px-4 py-2"
+                >
+                  {punkt}
+                </span>
               ))}
-            </ul>
+            </div>
             <div className="mt-10">
-              <Link href="/technische-ausstattung" className="btn-secondary-inverse">
-                Gesamte Ausstattung ansehen
+              <Link href="/pruefzentrum" className="btn-secondary-inverse">
+                Prüfzentrum im Detail
               </Link>
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 relative aspect-[4/3] lg:aspect-auto lg:h-[520px]">
+          <div className="order-1 lg:order-2 relative aspect-[4/3] lg:aspect-auto lg:h-[560px]">
             <Image
-              src={fotos.halleUebersicht.src}
-              alt={fotos.halleUebersicht.alt}
+              src={fotos.fahrzeugAufMessanlage.src}
+              alt={fotos.fahrzeugAufMessanlage.alt}
               fill
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="object-cover"
@@ -189,41 +171,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Leistungen */}
+      {/* Region */}
       <section className="max-w-content mx-auto px-6 py-16 md:py-24">
-        <p className="eyebrow mb-3">Leistungen</p>
+        <p className="eyebrow mb-3">Standort</p>
         <h2 className="text-3xl font-semibold max-w-xl">
-          Gutachten und technische Untersuchungen für jeden Anlass
+          Für Sie in der Region.
         </h2>
-        <p className="mt-4 text-graphit/70 max-w-2xl leading-relaxed">
-          Vom klassischen Unfallgutachten bis zur präzisen 3D-Vermessung —
-          hier finden Sie unser vollständiges Leistungsspektrum.
-        </p>
-        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-messing/30">
-          {leistungen.map((l) => (
-            <ServiceCard key={l.href} href={l.href} titel={l.titel} text={l.text} tag={l.tag} />
-          ))}
-        </div>
-        <div className="mt-8">
-          <Link href="/leistungen" className="btn-secondary">
-            Alle Leistungen ansehen
-          </Link>
+        <div className="mt-12">
+          <RegionSection />
         </div>
       </section>
 
-      {/* Ablauf */}
+      {/* Bewertungen */}
       <section className="max-w-content mx-auto px-6 py-16 md:py-24">
-        <p className="eyebrow mb-3">Ablauf</p>
-        <h2 className="text-3xl font-semibold max-w-xl">
-          Vom Kontakt zum fertigen Gutachten
+        <p className="eyebrow mb-3">Bewertungen</p>
+        <h2 className="text-3xl font-semibold max-w-xl mb-12">
+          Das sagen unsere Kunden.
         </h2>
-        <ProcessSteps variant="light" />
+        <ReviewsSection />
       </section>
 
-      <CTASection
-        title="Schildern Sie uns Ihren Fall."
-        text="Wir untersuchen Ihr Fahrzeug, dokumentieren den Zustand oder Schaden und erstellen ein nachvollziehbares Gutachten."
-      />
+      {/* Über uns Teaser */}
+      <section className="max-w-content mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative aspect-[4/3] order-2 md:order-1">
+          <Image
+            src={fotos.technischeUntersuchung.src}
+            alt={fotos.technischeUntersuchung.alt}
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover object-[center_20%]"
+          />
+        </div>
+        <div className="order-1 md:order-2">
+          <p className="eyebrow mb-3">Über uns</p>
+          <h2 className="text-2xl md:text-3xl font-semibold font-display">
+            Sachverstand trifft technische Ausstattung.
+          </h2>
+          <p className="mt-4 text-graphit/70 leading-relaxed">
+            Wir verbinden sachverständige Fahrzeugbewertung mit den
+            technischen Untersuchungsmöglichkeiten eines modern
+            ausgestatteten Prüfzentrums. Unser Anspruch: eine
+            nachvollziehbare, unabhängige und technisch fundierte
+            Schadenfeststellung.
+          </p>
+          <div className="mt-8">
+            <Link href="/ueber-uns" className="btn-secondary">
+              Mehr über uns
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Großer Kontakt-CTA */}
+      <BigContactCTA image={fotos.gebaeude.src} imageAlt={fotos.gebaeude.alt} />
+
+      {/* Qualifikationen */}
+      <section className="max-w-content mx-auto px-6 py-16 md:py-20">
+        <p className="eyebrow mb-6">Qualifikationen &amp; Partnerschaften</p>
+        <QualificationsBar />
+      </section>
     </>
   );
 }

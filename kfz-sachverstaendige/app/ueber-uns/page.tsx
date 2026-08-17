@@ -18,23 +18,21 @@ export default function UeberUnsPage() {
     <>
       <PageHero
         eyebrow="Über uns"
-        title={`${siteConfig.adacStatus} in ${siteConfig.address.city}`}
+        title="Sachverstand trifft technische Ausstattung."
         breadcrumbs={[{ name: "Über uns", path: "/ueber-uns" }]}
       >
         <div className="mt-8 space-y-5 max-w-2xl text-graphit/70 leading-relaxed">
           <p>
-            Das {siteConfig.companyName} unterstützt Fahrzeughalter,
-            Unfallgeschädigte, Werkstätten, Autohäuser und Rechtsanwälte in{" "}
-            {siteConfig.address.city} und der Region mit unabhängiger
-            Sachverständigenarbeit — losgelöst von den Interessen einer
-            Werkstatt oder Versicherung.
+            Wir unterstützen Fahrzeughalter, Unfallgeschädigte, Werkstätten,
+            Autohäuser und Rechtsanwälte in {siteConfig.address.city} und der
+            Region mit unabhängiger Sachverständigenarbeit — losgelöst von
+            den Interessen einer Werkstatt oder Versicherung.
           </p>
           <p>
-            Ansprechpartner ist {siteConfig.contactPerson}, Kfz-Technikermeister
-            und {siteConfig.adacStatus}. Die Begutachtung verbindet
-            persönliche Sachverständigenarbeit mit dem eigenen Prüfzentrum:
-            Schäden werden nicht nur betrachtet, sondern bei Bedarf vermessen,
-            diagnostiziert und nachvollziehbar dokumentiert.
+            Wir verbinden sachverständige Fahrzeugbewertung mit dem eigenen
+            Prüfzentrum: Schäden werden nicht nur betrachtet, sondern bei
+            Bedarf vermessen, diagnostiziert und nachvollziehbar
+            dokumentiert.
           </p>
         </div>
       </PageHero>
@@ -83,13 +81,12 @@ export default function UeberUnsPage() {
         <div className="max-w-2xl">
           <h2 className="text-2xl font-semibold font-display">Arbeitsweise</h2>
           <p className="mt-4 text-graphit/70 leading-relaxed">
-            Jede Begutachtung wird individuell auf Fahrzeug und Anlass
-            abgestimmt. Wo eine reine Sichtprüfung nicht ausreicht, kommen
-            die Mess- und Prüfmöglichkeiten des eigenen Prüfzentrums zum
-            Einsatz — von der 3D-Karosserie- und Achsvermessung bis zur
-            Freilegung beschädigter Bereiche und elektronischen
-            Fahrzeugdiagnose. Ziel ist eine nachvollziehbare, unabhängige
-            Dokumentation, auf die sich Kundinnen und Kunden verlassen können.
+            Wir stimmen jede Begutachtung individuell auf Fahrzeug und
+            Anlass ab. Reicht eine reine Sichtprüfung nicht aus, setzen wir
+            die Mess- und Prüfmöglichkeiten unseres Prüfzentrums ein — von
+            der 3D-Karosserie- und Achsvermessung bis zur Freilegung
+            beschädigter Bereiche und elektronischen Fahrzeugdiagnose. So
+            entsteht eine nachvollziehbare, unabhängige Dokumentation.
           </p>
         </div>
 

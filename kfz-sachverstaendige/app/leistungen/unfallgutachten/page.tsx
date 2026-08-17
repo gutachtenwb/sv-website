@@ -64,7 +64,7 @@ export default function UnfallgutachtenPage() {
       </section>
 
       <section className="bg-graphit text-nebel">
-        <div className="max-w-content mx-auto px-6 py-16 max-w-3xl">
+        <div className="max-w-3xl mx-auto px-6 py-16">
           <h2 className="text-2xl font-semibold font-display">
             Wer beauftragt den Sachverständigen?
           </h2>

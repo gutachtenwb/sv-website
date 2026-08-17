@@ -13,7 +13,7 @@ const routes = [
   "/leistungen/fahrzeugbewertung",
   "/leistungen/oldtimer-youngtimer",
   "/leistungen/kaufbegleitung",
-  "/technische-ausstattung",
+  "/pruefzentrum",
   "/ueber-uns",
   "/faq",
   "/kontakt",
